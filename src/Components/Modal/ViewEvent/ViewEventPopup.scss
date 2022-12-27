@@ -1,0 +1,60 @@
+.view-header
+{
+position: relative;    
+}
+.view-icons
+{
+    position: absolute;
+    right: 0;
+
+.view-btn
+{
+    cursor: pointer;
+   
+}
+
+.view-edit
+{
+    margin:0px 20px;
+}
+.view-close
+{
+    cursor: pointer;
+    margin-left:30px ;
+}
+}
+
+.view-body
+{
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.view-title
+{
+    padding-top:40px;
+    padding-bottom: 10px; 
+}
+.view-event-text
+{
+    padding-left: 15px;
+}
+
+.view-desc
+{
+    padding-top: 10px;
+    padding-bottom:20px ;
+    margin-left:2px
+}
+
+.view-text-btn
+{
+    width: 8%;
+}
+
+.view-close-btn
+{
+    position: absolute;
+   right: 0;
+}

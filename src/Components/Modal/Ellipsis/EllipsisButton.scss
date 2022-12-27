@@ -1,0 +1,35 @@
+
+//style for ellipsis
+.ellipsis-icon{
+    position: relative;
+    cursor: pointer;
+}
+.ellipsis-buttons
+{
+
+    position: absolute;
+    z-index: 100;
+  box-shadow: 1px 1px 5px  #9d9c9c;
+  display: flex;
+  width: 70px;
+  flex-direction: column;
+  .btn
+  {
+    cursor: pointer;
+    font-size: 12px;
+    padding: 8px;
+    background: #fff;
+    border: none;
+
+    &:hover
+    {
+      color: #fff;
+      background-color: #62006b;
+      transition: 0.3s linear;
+    }
+  }
+  .edit
+  {
+    padding-right: 15px;
+  }
+}

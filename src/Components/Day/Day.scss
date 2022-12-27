@@ -1,0 +1,253 @@
+.day-view-parent {
+  width: 75%;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+  .curr-day-width
+  {
+    position: fixed;
+    width: 75%;
+    z-index: 100;
+    // height: 80px;
+    background-color: #fff;
+  
+
+  .curr-day-parent {
+
+    // position: fixed;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    width: 28px;
+    padding-left: 45px;
+    padding-top: 15px;
+    // align-items: center;
+    // background-color: #fff;
+    // // align-items: center;
+    // margin-left: 40px;
+    // padding: 20px;
+
+    .curr-day {
+    //   width: 18px;
+      padding: 5px;
+      color: #fff;
+      border-radius: 20px;
+      background-color: #62006b;
+    }
+  }
+
+}
+  .timeline {
+    .timeline-component {
+      display: flex;
+      flex-direction: row;
+    //   width: 75%;
+
+      .time-component {
+        
+        position: relative;
+        top:88px;
+        height: 100px;
+        font-size: 12px;
+        color: #838383;
+        .time {
+        
+        
+          box-shadow: 1px 1px 5px #9d9c9c;
+          background-color: #fff;
+          border-radius: 20px;
+          padding: 5px;
+          width: 35px;
+        }
+      }
+      .timeline-event {
+        position: relative;
+        top:100px;
+        // margin-top: 12px;
+        border-top: 1px solid #dcdcdc;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// .timeline-event::before{
+//     content: "";
+//         margin-top: 12px;
+//         border-top: 1px solid #dcdcdc;
+//         position: absolute;
+//         width: 73%;
+//         // margin-top: -1px;
+//         // z-index: 3;
+//         pointer-events: none;
+// }
+
+// .timeline
+// {
+//     position: absolute;
+//     top:85px;
+//     .timeline-component
+//     {
+//         width: 100%;
+//         display: flex;
+//         flex-direction: row;
+
+//         .time-component
+//         {
+//             height: 100px;
+//             box-shadow: 1px 1px 5px  #9d9c9c;
+//             font-size: 12px;
+
+//             .time
+//             {
+//                 position: relative;
+//                 padding: 8px;
+//                 border-radius: 20px;
+//                 box-shadow: 1px 1px 5px  #9d9c9c;
+//             }
+//         }
+
+//         .timeline-event
+//         {
+//             // position:absolute;
+//             width: 100%;
+//           border-top: 1px solid #7d1111;
+//         }
+
+// .day-view
+// {
+//     width: 76%;
+//     box-sizing: border-box;
+//     // position: fixed;
+
+//     .curr-day-parent
+//     {
+//         font-size: 14px;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         padding-top: 10px;
+//         padding-bottom: 15px;
+//         padding-left: 70px;
+//         width:20px;
+
+//         .curr-day
+//         {
+//             padding:8px;
+//             border-radius: 20px;
+//             font-size: 17px;
+//             color: #fff;
+//             background-color: #62006b;
+//         }
+//     }
+// }
+//     .timeline
+//     {
+//         // position: absolute;
+//         // overflow-y: scroll;
+//     }
+//     .timeline-component
+//     {
+//         // margin-top:40%;
+//         // position: absolute;
+//         display:flex;
+//         flex-direction: row;
+//         width: 75%;
+
+//         .time-component
+//         {
+
+//             background-color: #fff;
+//             height: 100px;
+//             font-size: 12px;
+//             color:#838383;
+//             .time
+//             {
+//             box-shadow: 1px 1px 5px  #9d9c9c;
+//             background-color: #fff;
+//             border-radius: 20px;
+//             padding: 5px;
+//             width: 38px;
+//             }
+//         }
+//         .timeline-event
+//         {
+//             margin-top: 12px;
+//                 border-top: 1px solid #dcdcdc;
+//                 // position: absolute;
+//                 width: 100%;
+//             // padding-left: px;
+//         }
+
+//         // .timeline-event::before{
+//         //     content: "";
+//         //         margin-top: 12px;
+//         //         border-top: 1px solid #dcdcdc;
+//         //         position: absolute;
+//         //         width: 73%;
+//         //         // margin-top: -1px;
+//         //         // z-index: 3;
+//         //         pointer-events: none;
+//         // }
+
+//     }
+
+// //     .hrs-structure
+// //     {
+// //         position: relative;
+// //         display:  grid;
+// //         grid-template-columns: 55px;
+
+// //         .each-hr-parent
+// //         {
+// //             height: 100px;
+// //         }
+// //         .each-hr{
+// //             // position: relative;
+// //             // display: flex;
+// //             // row-gap: 70px
+// //             // height: 70px;
+
+// //             // width: 50px;
+// //             // margin-bottom: 70px;
+// //             font-size: 12px;
+// //             padding: 10px;
+// //             border-radius: 20px;
+// //             box-shadow: 1px 1px 5px  #9d9c9c;
+// //             background-color: #fff;
+// //         }
+
+// //         .lines
+// //         {
+// //             position: absolute;
+// //             padding-top: px;
+// //             padding-left: 5px;
+// //         }
+// //         .hr-line
+// //         {
+// //             position: absolute;
+// //             height: 100px;
+// //             // width: 100%;
+// //             // // position: absolute;
+// //             // border: none;
+// //             border-top: 1px solid #dcdcdc;
+// //             background-color: rgb(255, 255, 255);
+// //             // height: 113px;
+// //             box-shadow:  1px 2px 3px 4px #0000001a;
+
+// //     //         &::after
+// //     //         {
+// //     //             content: "";
+// //     // // border-top: 1px solid;
+// //     // position: absolute;
+// //     // width: 100%;
+// //     // margin-top: -1px;
+// //     // z-index: 3;
+// //     // pointer-events: none;
+// //     //         }
+// //         }
+
+// //     }
+// // }

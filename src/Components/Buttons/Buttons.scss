@@ -1,0 +1,237 @@
+
+//common style
+.common-button-style {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  font-size: 14px;
+  width: 85px;
+  background-color: transparent;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px  #9d9c9c;
+  border-radius: 25px;
+}
+
+//style for create button
+.create {
+  padding: 13px 25px;
+  width: 115px;
+
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+//style for create button
+.set-rem {
+  padding: 13px 18px;
+  width: 165px;
+
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+
+
+//style for Previous Button
+.previous
+{
+  padding: 10px 16px;
+  color: #fff;
+  background-color: #000000;
+
+  &:hover {
+    color: #000000;
+    background-color: #ffffff;
+    transition: 0.3s linear;
+  }
+}
+
+
+//style for Next Button
+.next
+{
+  padding: 10px 25px;
+
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+//style for Save Button
+.save
+{
+  padding: 10px 25px;
+
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+//style for edit Button
+.edit
+{
+  padding: 10px 28px;
+
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+//style for add Button
+.add
+{
+  padding: 10px 28px;
+
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+//style for update Button
+.update
+{
+  padding: 10px 18px;
+
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+//style for delete Button
+.delete
+{
+  padding: 10px 22px;
+  
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+//style for close Button
+.close
+{
+  padding: 10px 22px;
+  
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+//style for cancel Button
+.cancel
+{
+  padding: 10px 18px;
+  
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+//style for cancel Button
+.discard
+{
+  padding: 10px 20px;
+  
+  &:hover {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+
+
+//common style
+.today-btn {
+  display: flex;
+  justify-content: space-between;
+  border:none;
+  font-size: 14px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  // width: 50px;
+  background-color: #fff;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px  #9d9c9c;
+  border-radius: 20px;
+
+  &:hover
+  {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+}
+
+
+.choose-view
+{
+  position: relative;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+    background-color: #fff;
+    padding: 10px 15px ;
+    display: flex;
+    justify-content: space-between;
+    width: 90px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px  #9d9c9c;
+    &:hover
+  {
+    color: #fff;
+    background-color: #000000;
+    transition: 0.3s linear;
+  }
+}
+
+
+.three-view-btn
+{ 
+  position:absolute;
+  display: flex;
+  width: 90px;
+  flex-direction:column;
+  z-index: 100;
+  box-shadow: 1px 1px 5px  #9d9c9c;
+  
+  button
+  {
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    background-color: #fff;
+    padding: 10px 0px ;
+    &:hover
+  {
+    color: #fff;
+    background-color: #62006b;
+    transition: 0.3s linear;
+  }
+  }
+  
+}

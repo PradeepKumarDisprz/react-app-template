@@ -1,0 +1,52 @@
+.cal-dashboard-parent
+{
+    width: 100%;
+    height: 73px;
+    border-bottom: 1px solid #dcdcdc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .dashboard-left
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 20px;
+        
+        .ham-menu
+        {
+            margin-right: 30px;
+            padding: 15px;
+            cursor: pointer;
+            &:hover
+            {
+                color: #fff;
+                background-color: #62006b;
+            }
+        }
+
+        .dash-title
+        {
+            cursor: pointer;
+            font-size: 25px;
+            padding-right: 50px;
+        }
+        .today{
+            padding-right: 40px;
+        }
+    }
+
+    .dashboard-right
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .sel-view
+        {
+            padding-right:30px;
+        }
+    }
+}
