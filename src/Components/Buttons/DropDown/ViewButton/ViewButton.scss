@@ -1,0 +1,49 @@
+
+.choose-view {
+    position: relative;
+    border: 1px solid #9d9c9c;
+    font-size: 14px;
+  
+    cursor: pointer;
+    background-color: #fff;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+    border-radius: 5px;
+    // box-shadow: 1px 1px 5px  #9d9c9c;
+    &:hover {
+      color: #fff;
+      background-color: #000000;
+      transition: 0.3s linear;
+    }
+    .sel-day {
+      padding-right: 5px;
+    }
+  }
+  
+  .two-view-btn {
+    position: absolute;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 1px 1px 5px #9d9c9c;
+  
+    .btn {
+      display: flex;
+      justify-content: center;
+      width: 80px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      text-decoration: none;
+      color: #000000;
+      font-size: 14px;
+      &:hover
+      {
+        color: #fff;
+        background-color:#62006b ;
+      }
+    }
+  }
+  

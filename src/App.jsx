@@ -1,13 +1,24 @@
-import RightPanel from "./Components/SideBar/RightPanel";
+import React from "react";
+import NavBar from "./Components/NavBar/NavBar";
+import EventPage from "./Components/EventPage/EventPage";
+import SidePanel from "./Components/SidePanel/SidePanel";
 import "./App.scss";
-import Day from "./Components/Day/Day";
+import Modal from "./Modal";
+import DayNavigator from "./Components/DayNavigator/DayNavigator";
+
+
+
 const App = () => {
   return (
     <>
-
-    {/* <Day/> */}
-    {/* <RightPanel/> */}
-    </>
+    <Modal/>
+    {/* <DayNavigator/> */}
+   
+    <NavBar/>
+    <SidePanel/>
+    <EventPage/>
+    
+    </>  
   );
 };
 

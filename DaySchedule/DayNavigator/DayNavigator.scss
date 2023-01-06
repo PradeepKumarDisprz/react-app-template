@@ -1,0 +1,18 @@
+.nav-month-year
+{
+   background-color:antiquewhite;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000000;
+ button
+ {
+    cursor: pointer;
+    border: 1px solid #dcdcdc;
+    color: #000000;
+    background:#fff;
+    margin-right: 20px;
+    padding: 15px 20px;
+    border-radius: 50px;
+ }
+}

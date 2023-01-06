@@ -1,0 +1,123 @@
+@import "../../ResusableStyles/_mixin.scss";
+
+.resp-pop-up-overlay {
+  @include overlay;
+  justify-content: flex-end;
+  padding-top: 20px;
+  padding-right: 20px;
+  // margin-bottom: 200px;
+  // display: ;
+  background: transparent;
+  align-items: flex-start;
+
+  .resp-pop-up-box {
+    border-radius: 8px;
+    width: 18%;
+    display: flex;
+    cursor: default;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    transform: translateX(250px);
+    transition: 0.3s linear;
+    box-shadow:1px 1px 5px #a3a3a3;
+    animation-name: smooth;
+    animation-duration: 2s linear;
+  }
+
+  @keyframes smooth {
+    from {
+      transform: translateX((250px));
+    }
+    to
+    {
+      transform: translateX(0px);
+    }
+    
+  }
+
+  .resp-trans
+  {
+    transform: translateX(0px);
+    transition: 0.3s linear;
+  }
+
+  .resp-check
+{
+  padding: 15px;
+  background-color: #62006b;
+  color:#fff;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+  
+  .resp-faXmark {
+    @include popupHeaderIcons;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  .resp-txt {
+    padding-left: 5px;
+    font-size: 15px;
+  }
+}
+
+
+
+
+.error-pop-up-overlay {
+  @include overlay;
+ 
+
+  .error-pop-up-box {
+    @include popupBox;
+    width: 22%;
+  }
+  
+  .error-header {
+    @include popupHeader;
+  }
+
+  .error-faXmark {
+    @include popupHeaderIcons;
+  }
+
+  .error-content
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: default;
+
+    .error-content-name
+    {
+      font-size: 18px;
+      font-weight: bold;
+      color: #dd4040;
+    }
+
+    .error-symbol
+    {
+      padding-left: 5px;
+      font-size: 20px;
+    }
+
+    .error-code
+    {
+      padding-top: 20px;
+      color: #dd4040;
+    }
+  .error-message{
+    padding-top: 10px;
+    font-size: 15px;
+    width: 80%;
+    padding-top: 20px;
+    padding-bottom: 30px;    
+    text-align: center;
+    color: #868585;
+  }
+}
+
+}

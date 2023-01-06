@@ -1,0 +1,135 @@
+@import "../../ResusableStyles/_mixin.scss";
+
+.view-pop-up-overlay {
+  @include overlay;
+  // z-index: 1000;
+
+  .view-pop-up-box {
+    @include popupBox;
+    width: 25%;
+    // justify-content: stretch;
+    align-items: stretch;
+  }
+
+  .view-event-header {
+    @include popupHeader;
+    padding-bottom: 5px;
+  }
+  .view-header-ellipsis
+  {
+    margin-right: 15px;
+    padding:5px;
+  }
+
+  .view-header-btn {
+    @include popupHeaderIcons;
+  }
+
+  .view-event-body {
+    &:hover
+    {
+        cursor:default;
+    }
+    padding-left: 40px;
+    font-size: 14px;
+
+    .view-event-title {
+      font-size: 18px;
+      padding-bottom: 20px;
+    }
+
+    .view-txt-common-style {
+      display: flex;
+      padding-bottom: 15px;
+    }
+
+    .view-event-text {
+      display: flex;
+      flex-direction: column;
+      padding-left: 15px;
+      .time
+      {
+        padding-bottom: 10px;
+      }
+      .txt
+      { 
+        display: inline-block;
+        width: 60px;
+      }
+    }
+    .view-content-icon
+    {
+        width: 20px;
+    }
+
+  }
+
+  .view-event-popup-btns {
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: end;
+  }
+}
+
+// .view-header
+// {
+// position: relative;
+// }
+// .view-icons
+// {
+//     position: absolute;
+//     right: 0;
+
+// .view-btn
+// {
+//     cursor: pointer;
+
+// }
+
+// .view-edit
+// {
+//     margin:0px 20px;
+// }
+// .view-close
+// {
+//     cursor: pointer;
+//     margin-left:30px ;
+// }
+// }
+
+// .view-body
+// {
+//     padding-left: 10px;
+//     display: flex;
+//     flex-direction: column;
+// }
+
+// .view-title
+// {
+//     padding-top:40px;
+//     padding-bottom: 10px;
+// }
+// .view-event-text
+// {
+//     padding-left: 15px;
+// }
+
+// .view-desc
+// {
+//     padding-top: 10px;
+//     padding-bottom:20px ;
+//     margin-left:2px
+// }
+
+// .view-text-btn
+// {
+//     width: 8%;
+// }
+
+// .view-close-btn
+// {
+//     position: absolute;
+//    right: 0;
+// }

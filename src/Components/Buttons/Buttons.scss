@@ -1,4 +1,3 @@
-
 //common style
 .common-button-style {
   display: flex;
@@ -6,28 +5,41 @@
   border: none;
   font-size: 14px;
   width: 85px;
-  background-color: transparent;
+  background-image: repeating-linear-gradient(to bottom right,#f1e5e8,#fad2bc);
+  color:#6b1000;
   cursor: pointer;
-  box-shadow: 1px 1px 5px  #9d9c9c;
-  border-radius: 25px;
+  box-shadow: 1px 1px 5px #9d9c9c;
+  border-radius: 5px;
 }
 
 //style for create button
 .create {
-  padding: 13px 25px;
-  width: 115px;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  box-shadow: none;
+  padding: 10px 15px;
+  width: 130px;
+  
+  .add-icon {
+    font-size: 14px;
+    padding-right: 15px;
+  }
 
   &:hover {
+    background-image: none;
+    background-color: #faa090;
     color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
   }
 }
 
 //style for create button
 .set-rem {
-  padding: 13px 18px;
-  width: 165px;
+  padding: 12px 16px;
+  width: 155px;
+  .bell-icon {
+    font-size: 16px;
+  }
 
   &:hover {
     color: #fff;
@@ -36,26 +48,20 @@
   }
 }
 
-
-
 //style for Previous Button
-.previous
-{
+.previous {
   padding: 10px 16px;
   color: #fff;
   background-color: #000000;
 
   &:hover {
-    color: #000000;
-    background-color: #ffffff;
-    transition: 0.3s linear;
+    color: #fff;
+    background-color: #62006b;
   }
 }
 
-
 //style for Next Button
-.next
-{
+.next {
   padding: 10px 25px;
 
   &:hover {
@@ -66,8 +72,7 @@
 }
 
 //style for Save Button
-.save
-{
+.save {
   padding: 10px 25px;
 
   &:hover {
@@ -78,8 +83,7 @@
 }
 
 //style for edit Button
-.edit
-{
+.edit {
   padding: 10px 28px;
 
   &:hover {
@@ -90,8 +94,7 @@
 }
 
 //style for add Button
-.add
-{
+.add {
   padding: 10px 28px;
 
   &:hover {
@@ -102,8 +105,7 @@
 }
 
 //style for update Button
-.update
-{
+.update {
   padding: 10px 18px;
 
   &:hover {
@@ -114,10 +116,9 @@
 }
 
 //style for delete Button
-.delete
-{
+.delete {
   padding: 10px 22px;
-  
+
   &:hover {
     color: #fff;
     background-color: #62006b;
@@ -126,10 +127,9 @@
 }
 
 //style for close Button
-.close
-{
+.close {
   padding: 10px 22px;
-  
+
   &:hover {
     color: #fff;
     background-color: #62006b;
@@ -138,10 +138,9 @@
 }
 
 //style for cancel Button
-.cancel
-{
+.cancel {
   padding: 10px 18px;
-  
+
   &:hover {
     color: #fff;
     background-color: #62006b;
@@ -150,18 +149,15 @@
 }
 
 //style for cancel Button
-.discard
-{
+.discard {
   padding: 10px 20px;
-  
+
   &:hover {
     color: #fff;
     background-color: #62006b;
     transition: 0.3s linear;
   }
 }
-
-
 
 //common style
 .today-btn {
@@ -169,69 +165,15 @@
   justify-content: space-between;
   border:none;
   font-size: 14px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  // width: 50px;
-  background-color: #fff;
+  padding: 10px 15px;
+  background-image: repeating-linear-gradient(to bottom right,#f1e5e8,#fad2bc);
+  color:#6b1000;
   cursor: pointer;
-  box-shadow: 1px 1px 5px  #9d9c9c;
-  border-radius: 20px;
+  border-radius: 5px;
 
-  &:hover
-  {
+  &:hover {
+    background-image: none;
+    background-color: #faa090;
     color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
   }
-}
-
-
-.choose-view
-{
-  position: relative;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-    background-color: #fff;
-    padding: 10px 15px ;
-    display: flex;
-    justify-content: space-between;
-    width: 90px;
-    border-radius: 20px;
-    box-shadow: 1px 1px 5px  #9d9c9c;
-    &:hover
-  {
-    color: #fff;
-    background-color: #000000;
-    transition: 0.3s linear;
-  }
-}
-
-
-.three-view-btn
-{ 
-  position:absolute;
-  display: flex;
-  width: 90px;
-  flex-direction:column;
-  z-index: 100;
-  box-shadow: 1px 1px 5px  #9d9c9c;
-  
-  button
-  {
-    cursor: pointer;
-    border: none;
-    font-size: 14px;
-    background-color: #fff;
-    padding: 10px 0px ;
-    &:hover
-  {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
-  }
-  }
-  
 }

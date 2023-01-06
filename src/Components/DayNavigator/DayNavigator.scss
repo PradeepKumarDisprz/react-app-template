@@ -1,0 +1,93 @@
+.nav-month-year {
+  width: 100%;
+  background-color: #eceef1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000000;
+  padding: 0px 15px;
+  border-radius: 10px;
+  
+
+  button {
+    cursor: pointer;
+    border: 1px solid #dcdcdc;
+    color: #000000;
+    background: #fff;
+    box-shadow: 1px 1px 5px #dcdcdc;
+    padding: 15px 18px;
+    border-radius: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .day-view-week {
+    padding: 8px 0px;
+    display: flex;
+  }
+  .day-view-week-day {
+    display: flex;
+    width: 90px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px;
+
+    .week-day-name
+    {
+      font-size: 12px;
+    }
+
+    .week-date
+    {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+  }
+
+  .curr-day-in-week-bg {
+    box-shadow: 1px 1px 5px #dcdcdc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color:#6b1000;
+  }
+  .faded-day-in-week-bg {
+    color: #868686;
+  }
+}
+
+// .calendar {
+//    // padding: 15px;
+//    width: 70%;
+//    border-radius: 5px;
+//    background-color: #fff;
+//    border-radius: 10px;
+
+//      span {
+//        font-size: 13px;
+//        font-weight: bold;
+//      }
+
+//      button {
+//        cursor: pointer;
+//        border: none;
+//        padding: 3px 5px;
+//        font-size: 12px;
+//        color:#6b1000;
+//        border-radius: 20px;
+//        background-color: #fff;
+
+//        &:hover {
+//          color: #fff;
+//          background-color: #faa090;
+//        }
+//      }
+//    }
+
+// .cal-week-days {
+//   display: grid;
+//   grid-template-columns: repeat(7, 1fr);
+//   padding: 10px;
+//   font-size: 12px;
+//   font-weight: bold;
+// }

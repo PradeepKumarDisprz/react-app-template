@@ -1,26 +1,27 @@
 .appointmentContent{
-    position: relative;
-    box-shadow: 1px 1px 5px  #9d9c9c;
-    padding: 0px 20px;
-    padding-top: 8px;
-    padding-bottom: 10px;
-    border-radius: 20px;
+    // box-shadow: 0px 0px 3px  #9d9c9c;
+    z-index: 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: #000000;
+    background-color: #f2f3f7;
 
-    .appointment-header
+    &:hover
     {
-        display: flex;
-        justify-content: space-between;
+        border: 1px solid #6b1000;
+       
     }
 
     .appointment-title
     {
-        font-size: 16px;
-        font-weight: bold;
+        padding-right: 20px;
     }
     .appointment-timestamp
     {
-        padding-top: 5px;
-        font-size: 12px;
+        padding-left: 20px;
+        // padding-right: 100px;
     }
 
 }

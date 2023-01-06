@@ -1,0 +1,105 @@
+.calendar {
+  // padding: 15px;
+  width: 280px;
+  border-radius: 5px;
+  background-color: #fff;
+  border-radius: 10px;
+
+  .cal-header-container
+  {
+    cursor: default;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-image: repeating-linear-gradient(to bottom right,#f1e5e8,#fad2bc);
+    color:#6b1000;
+  }
+
+  .cal-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+
+    .month-year {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width:155px;
+      cursor: default;
+    }
+
+    span {
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      padding: 3px 5px;
+      font-size: 12px;
+      color:#6b1000;
+      border-radius: 20px;
+      background-color:transparent;
+
+      &:hover {
+        color: #fff;
+        background-color: #faa090;
+      }
+    }
+  }
+
+  
+  .cal-week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .week-days {
+    justify-self: center;
+  }
+
+  .cal-month {
+    justify-self: flex-end;
+    cursor: pointer;
+
+
+    .cal-days {
+      display: grid;
+      grid-template-columns: repeat(7, 32px);
+      row-gap: 5px;
+      padding: 10px 12px;
+      column-gap:5px;
+      
+    }
+
+    .days {
+      transition: 0.3s linear;
+      cursor: pointer;
+      border: none;
+      color:#6b1000;
+      font-size: 10px;
+      padding: 10px;
+      background-color:#fff;
+      border-radius: 50px;
+      &:hover {
+        color: #fff;
+        background-color: #faa090;
+      }
+    }
+
+    .curr-day-bg {
+      color: #fff;
+      background-color: #6b1000;
+    }
+    .other-day-bg {
+      color: #fff;
+      background-color: #faa090;
+      // border-radius: 50px;
+    }
+    .faded-bg {
+      color:#c09e98;
+    }
+  }
+}
