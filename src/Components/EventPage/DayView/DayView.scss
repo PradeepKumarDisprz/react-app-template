@@ -1,4 +1,4 @@
-@import "../../ResusableStyles/variable.scss";
+@import "../../ReUsableStyles/variable.scss";
 
 .day-view-parent {
   width: 100%;
@@ -40,12 +40,12 @@
       //   color: $font-style-color;
       // }
 
-      .dotted-lines
-      {
-        margin:8px;
-        height: 10px;
-        border-right: 5px dotted $border-color;
-      }
+      // .dotted-lines
+      // {
+      //   margin:8px;
+      //   height: 10px;
+      //   border-right: 5px dotted $border-color;
+      // }
     }
     .timeline-container {
       position: relative;

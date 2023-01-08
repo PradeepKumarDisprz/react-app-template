@@ -8,8 +8,8 @@ import {
   faAnglesRight,
 } from "@fortawesome/free-solid-svg-icons";
 import "./SmallCalendar.scss";
-import GetMonth from "../../Utils/Month";
-import GlobalContext from "../../Context/GlobalContext";
+import GetMonth from "../../../Utils/Month";
+import GlobalContext from "../../../Context/GlobalContext";
 
 const SmallCalendar = () => {
   const [currYear, setCurrYear] = useState(dayjs().year());

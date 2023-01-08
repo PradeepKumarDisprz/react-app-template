@@ -1,118 +1,66 @@
 import "./Buttons.scss";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd, faBell, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faAdd } from "@fortawesome/free-solid-svg-icons";
 
-//Create Event Button
+//Create Button
 export function CreateButton() {
   return (
-    <button className="common-button-style create">
+    <button className="create-btn">
       <FontAwesomeIcon icon={faAdd} className="add-icon" />
-      <span>New Task</span>
+      <span>Create</span>
     </button>
   );
 }
 
-//SetAlarm Button
-export function SetAlarmButton() {
-  return (
-    <button className="common-button-style set-rem">
-      <FontAwesomeIcon icon={faBell} className="bell-icon" />
-      <span>Set Remainder</span>
-    </button>
-  );
-}
-
-//Previous Button
-export function PreviousButton() {
-  return (
-    <button className="common-button-style previous">
-      <span>Previous</span>
-    </button>
-  );
-}
-
-//Next Button
-export function NextButton() {
-  return (
-    <button className="common-button-style next">
-      <span>Next</span>
-    </button>
-  );
-}
-
-//Save Event Button
+//Save Button
 export function SaveButton() {
   return (
-    <button type="submit" className="common-button-style save">
+    <button type="submit" className="save-btn">
       <span>Save</span>
     </button>
   );
 }
 
-//Edit Event Button
-export function EditButton() {
-  return (
-    <button className="common-button-style edit">
-      <span>Edit</span>
-    </button>
-  );
-}
 
-//Add Event Button
-export function AddButton() {
-  return (
-    <button className="common-button-style add">
-      <span>Add</span>
-    </button>
-  );
-}
-
-//Update Event Button
+//Update Button
 export function UpdateButton() {
   return (
-    <button type="submit" className="common-button-style update">
+    <button type="submit" className="update-btn">
       <span>Update</span>
     </button>
   );
 }
 
-//Close Event Button
+//Close Button
 export function CloseButton() {
   return (
-    <button className="common-button-style close">
+    <button className="close-btn">
       <span>Close</span>
     </button>
   );
 }
 
-//Cancel Event Button
+//Cancel Button
 export function CancelButton() {
   return (
-    <button className="common-button-style cancel">
+    <button className="cancel-btn">
       <span>Cancel</span>
     </button>
   );
 }
 
-//Delete Event Button
-export function DeleteButton() {
-  return (
-    <button className="common-button-style delete">
-      <span>Delete</span>
-    </button>
-  );
-}
 
 //Discard Button
 export function DiscardButton() {
   return (
-    <button className="common-button-style discard">
+    <button className="discard-btn">
       <span>Discard</span>
     </button>
   );
 }
 
+//Today Button
 export function TodayButton() {
   return (
     <button className="today-btn">

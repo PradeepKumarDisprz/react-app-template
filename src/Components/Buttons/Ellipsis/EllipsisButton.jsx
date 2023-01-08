@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef,useEffect} from "react";
 import "./EllipsisButton.scss";
-import GlobalContext from "../../../../Context/GlobalContext";
+import GlobalContext from "../../../Context/GlobalContext";
 
 function EllipsisButton({meet,isOpen,setIsOpen}) {
   const {setDeleteEvent,viewEvent,setViewEvent,setUpdateEvent,setShowModal}=useContext(GlobalContext);

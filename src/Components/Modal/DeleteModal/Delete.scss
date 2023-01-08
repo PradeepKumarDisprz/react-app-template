@@ -1,4 +1,5 @@
-@import "../../ResusableStyles/_mixin.scss";
+@import "../../ReUsableStyles/_mixin.scss";
+@import "../../ReUsableStyles/variable.scss";
 
 .dlt-pop-up-overlay {
   @include overlay;
@@ -22,7 +23,7 @@
   .dlt-popup-btns {
     padding-top: 30px;
     padding-bottom: 25px;
-    display: flex;
+    display: $display-property;
 
     .dlt-btn {
       padding-right: 20px;

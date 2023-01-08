@@ -7,11 +7,13 @@
     justify-content: $space-between ;
     width: 100%;
     color: #000000;
-    background-color: #f2f3f7;
+    background-color: $container-background-color;
+    // background-color: #f2f3f7;
 
     &:hover
     {
         border: 1px solid $font-style-color;
+        z-index:1;
     }
 
     .appointment-title

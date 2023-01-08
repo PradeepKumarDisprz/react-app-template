@@ -1,25 +1,16 @@
-//common style
-.common-button-style {
-  display: flex;
-  justify-content: space-between;
-  border: none;
-  font-size: 14px;
-  width: 85px;
-  background-image: repeating-linear-gradient(to bottom right,#f1e5e8,#fad2bc);
-  color:#6b1000;
-  cursor: pointer;
-  box-shadow: 1px 1px 5px #9d9c9c;
-  border-radius: 5px;
-}
+@import "../ReUsableStyles/variable.scss";
+@import "../ReUsableStyles/mixin.scss";
+
 
 //style for create button
-.create {
-  display: flex;
-  justify-content: center;
+.create-btn{
+  @include buttonStyle;
+  display: $display-property;
+  justify-content: $align-item;
   font-size: 15px;
   box-shadow: none;
   padding: 10px 15px;
-  width: 130px;
+  width: 120px;
   
   .add-icon {
     font-size: 14px;
@@ -27,153 +18,77 @@
   }
 
   &:hover {
-    background-image: none;
-    background-color: #faa090;
-    color: #fff;
+    @include buttonHover;
   }
 }
 
-//style for create button
-.set-rem {
-  padding: 12px 16px;
-  width: 155px;
-  .bell-icon {
-    font-size: 16px;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
-  }
-}
-
-//style for Previous Button
-.previous {
-  padding: 10px 16px;
-  color: #fff;
-  background-color: #000000;
-
-  &:hover {
-    color: #fff;
-    background-color: #62006b;
-  }
-}
-
-//style for Next Button
-.next {
-  padding: 10px 25px;
-
-  &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
-  }
-}
 
 //style for Save Button
-.save {
+.save-btn {
+  @include buttonStyle;
   padding: 10px 25px;
 
   &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
+    @include buttonHover;
   }
 }
 
-//style for edit Button
-.edit {
-  padding: 10px 28px;
-
-  &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
-  }
-}
 
 //style for add Button
-.add {
+.add-btn {
+  @include buttonStyle;
   padding: 10px 28px;
 
   &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
+    @include buttonHover;
   }
 }
 
 //style for update Button
-.update {
+.update-btn {
+  @include buttonStyle;
   padding: 10px 18px;
 
   &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
-  }
-}
-
-//style for delete Button
-.delete {
-  padding: 10px 22px;
-
-  &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
+    @include buttonHover;
   }
 }
 
 //style for close Button
-.close {
+.close-btn{
+  @include buttonStyle;
   padding: 10px 22px;
 
   &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
+    @include buttonHover;
   }
 }
 
 //style for cancel Button
-.cancel {
+.cancel-btn{
+  @include buttonStyle;
   padding: 10px 18px;
 
   &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
+    @include buttonHover;
   }
 }
 
 //style for cancel Button
-.discard {
+.discard-btn{
+  @include buttonStyle;
   padding: 10px 20px;
 
   &:hover {
-    color: #fff;
-    background-color: #62006b;
-    transition: 0.3s linear;
+    @include buttonHover;
   }
 }
 
 //common style
 .today-btn {
-  display: flex;
-  justify-content: space-between;
-  border:none;
-  font-size: 14px;
+  @include buttonStyle;
   padding: 10px 15px;
-  background-image: repeating-linear-gradient(to bottom right,#f1e5e8,#fad2bc);
-  color:#6b1000;
-  cursor: pointer;
-  border-radius: 5px;
-
   &:hover {
-    background-image: none;
-    background-color: #faa090;
-    color: #fff;
+    @include buttonHover;
   }
 }

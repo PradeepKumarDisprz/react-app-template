@@ -1,0 +1,31 @@
+@import "../../ReUsableStyles/variable.scss";
+//style for ellipsis
+.ellipsis-icon {
+  position: relative;
+  cursor: $cursor-pointer;
+}
+.ellipsis-buttons {
+  position: absolute;
+  margin-top: 8px;
+  margin-left: 0px;
+  z-index: 100;
+  box-shadow: 1px 1px 5px #9d9c9c;
+  width: 70px;
+  display:$display-property;
+  flex-direction: $flex-direction;
+  .btn {
+    cursor:$cursor-pointer;
+    font-size: 12px;
+    padding: 8px;
+    background: $cursor-pointer;
+    border: none;
+    &:hover {
+      color: #fff;
+      background-color: $hover-color;
+      transition: 0.3s linear;
+    }
+  }
+  .edit {
+    padding-right: 15px;
+  }
+}

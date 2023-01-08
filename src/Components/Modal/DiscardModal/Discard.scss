@@ -1,5 +1,5 @@
-@import "../../ResusableStyles/_mixin.scss";
-
+@import "../../ReUsableStyles/_mixin.scss";
+@import "../../ReUsableStyles/variable.scss";
 .discard-pop-up-overlay {
   @include overlay;
 
@@ -22,7 +22,7 @@
   .discard-popup-btns {
     padding-top: 30px;
     padding-bottom: 30px;
-    display: flex;
+    display: $display-property;
 
     .discard-cancel-btn {
       padding-right: 20px;

@@ -1,4 +1,4 @@
-import SmallCalendar from "../SmallCalendar/SmallCalendar";
+import SmallCalendar from "./SmallCalendar/SmallCalendar";
 import "./SidePanel.scss";
 
 function RightPanel() {

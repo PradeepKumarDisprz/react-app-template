@@ -1,8 +1,9 @@
+@import "../../ReUsableStyles/variable.scss";
+
 .calendar {
-  // padding: 15px;
   width: 280px;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: $background-color;
   border-radius: 10px;
 
   .cal-header-container
@@ -10,19 +11,19 @@
     cursor: default;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    background-image: repeating-linear-gradient(to bottom right,#f1e5e8,#fad2bc);
-    color:#6b1000;
+    background-image: $linear-gradient;
+    color:$font-style-color;
   }
 
   .cal-header {
-    display: flex;
-    justify-content: space-between;
+    display: $display-property;
+    justify-content: $space-between;
     padding: 10px 15px;
 
     .month-year {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: $display-property;
+      justify-content: $space-between;
+      align-items: $align-item;
       width:155px;
       cursor: default;
     }
@@ -33,17 +34,17 @@
     }
 
     button {
-      cursor: pointer;
+      cursor: $cursor-pointer;
       border: none;
       padding: 3px 5px;
       font-size: 12px;
-      color:#6b1000;
+      color:$font-style-color;
       border-radius: 20px;
       background-color:transparent;
 
       &:hover {
         color: #fff;
-        background-color: #faa090;
+        background-color: $hover-color;
       }
     }
   }
@@ -57,12 +58,12 @@
     font-weight: bold;
   }
   .week-days {
-    justify-self: center;
+    justify-self:$align-item;
   }
 
   .cal-month {
     justify-self: flex-end;
-    cursor: pointer;
+    cursor: $cursor-pointer;
 
 
     .cal-days {
@@ -76,30 +77,29 @@
 
     .days {
       transition: 0.3s linear;
-      cursor: pointer;
+      cursor: $cursor-pointer;
       border: none;
-      color:#6b1000;
+      color:$font-style-color;
       font-size: 10px;
       padding: 10px;
       background-color:#fff;
       border-radius: 50px;
       &:hover {
         color: #fff;
-        background-color: #faa090;
+        background-color: $hover-color;
       }
     }
 
     .curr-day-bg {
-      color: #fff;
-      background-color: #6b1000;
+      color: $background-color;
+      background-color: $font-style-color;
     }
     .other-day-bg {
-      color: #fff;
-      background-color: #faa090;
-      // border-radius: 50px;
+      color: $background-color;
+      background-color: $hover-color;
     }
     .faded-bg {
-      color:#c09e98;
+      color:$small-cal-faded-bg;
     }
   }
 }

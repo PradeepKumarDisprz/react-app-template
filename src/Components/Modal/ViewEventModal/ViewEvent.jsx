@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import React from "react";
-import EllipsisButton from "../../Buttons/DropDown/Ellipsis/EllipsisButton";
+import EllipsisButton from "../../Buttons/Ellipsis/EllipsisButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXmark,
