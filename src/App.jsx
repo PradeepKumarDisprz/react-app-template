@@ -4,16 +4,13 @@ import EventPage from "./Components/EventPage/EventPage";
 import SidePanel from "./Components/SidePanel/SidePanel";
 import "./App.scss";
 import Modal from "./Modal";
-import DayNavigator from "./Components/DayNavigator/DayNavigator";
 
 
 
 const App = () => {
   return (
     <>
-    <Modal/>
-    {/* <DayNavigator/> */}
-   
+    <Modal/> 
     <NavBar/>
     <SidePanel/>
     <EventPage/>

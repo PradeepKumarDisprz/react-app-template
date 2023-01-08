@@ -1,17 +1,17 @@
+@import "../ResusableStyles/variable.scss";
+
 .appointmentContent{
-    // box-shadow: 0px 0px 3px  #9d9c9c;
     z-index: 0;
     border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
+    display:$display-property;
+    justify-content: $space-between ;
     width: 100%;
     color: #000000;
     background-color: #f2f3f7;
 
     &:hover
     {
-        border: 1px solid #6b1000;
-       
+        border: 1px solid $font-style-color;
     }
 
     .appointment-title

@@ -1,18 +1,15 @@
+@import "../ResusableStyles/variable.scss";
+
 .side-panel
 {
-    position: fixed;
+    position: $position-fixed;
+    display: $display-property;
+    flex-direction: $flex-direction;
+    background-color: $container-background-color;
     top:105px;
     z-index: 0;
-    left: 10px;
-    height: 75vh;
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    border-radius: 20px;
-    background-color: #eceef1;
-
-    .sp-create-btn
-    {
-        padding-bottom: 20px;
-    }
+    left: 25px;
+    height: 78vh;
+    padding:20px;
+    border-radius: 10px;
 }

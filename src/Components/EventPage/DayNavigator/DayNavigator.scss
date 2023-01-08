@@ -1,0 +1,57 @@
+@import "../../ResusableStyles/variable.scss";
+
+.week-navigator {
+  width: 100%;
+  background-color:$container-background-color ;
+  display: $display-property;
+  justify-content:$space-between;
+  align-items: $align-item;
+  color: #000000;
+  border-radius: 10px;
+
+  button {
+    cursor:$cursor-pointer;
+    border: 1px solid $border-color;
+    color: #000000;
+    background: #fff;
+    box-shadow: 1px 1px 5px $border-color;
+    padding: 15px 18px;
+    border-radius: 50px;
+    margin: 0px 10px;
+  }
+
+  .day-view-week {
+    padding: 8px 0px;
+    display: $display-property;
+  }
+  .day-view-day {
+    display:$display-property;
+    width: 90px;
+    flex-direction: $flex-direction;
+    align-items: $align-item;
+    padding: 20px 25px;
+    cursor:$cursor-pointer;
+
+    .week-day-name
+    {
+      font-size: 12px;
+    }
+
+    .week-date
+    {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+  }
+
+  .curr-day-in-week-bg {
+    box-shadow: 1px 1px 5px $border-color;
+    border-radius: 10px;
+    background-color: $background-color;
+    color:$font-style-color;
+  }
+  .faded-day-in-week-bg {
+    color:$font-faded-bg;
+  }
+}

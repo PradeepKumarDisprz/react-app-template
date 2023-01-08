@@ -1,10 +1,10 @@
+@import "../ResusableStyles/variable.scss";
+
 .event-page-parent
 {
-    position: fixed;
+    position:$position-fixed;
     top:105px;
     right: 0;
-    margin-right: 30px;
-    width: 73%;
-    // height: 83vh;
-    scrollbar-width: none;
+    margin-right: 25px;
+    width: 74%;
 }

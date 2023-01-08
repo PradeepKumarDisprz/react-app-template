@@ -3,12 +3,7 @@ import GlobalContext from "../../Context/GlobalContext";
 import "./NavBar.scss";
 import EventLogo from "../../Assests/EventLogo.svg";
 import { TodayButton, CreateButton } from "../Buttons/Buttons";
-import SearchBar from "../Search/SearchBar/SearchBar";
-import DayNavigator from "../DayNavigator/DayNavigator";
 import dayjs from "dayjs";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const {
@@ -19,9 +14,6 @@ const NavBar = () => {
     setCurrYearIndex,
     setShowModal,
   } = useContext(GlobalContext);
-  const [isNotSearched, setIsNotSearched] = useState(true);
-
-  const navigate = useNavigate();
 
   const handleCreateModal = () => {
     setShowModal(true);
@@ -40,24 +32,18 @@ const NavBar = () => {
 
   return (
     <div className="nav-bar">
-      <div className="dashboard">
-        <div className="nav-logo-container">
-          <img src={EventLogo} alt="" className="nav-logo" />
-         
-          <span className="nav-title">Calendar</span>
-        </div>    
-      <div className="dashboard-end">
-          <div className="nav-today" onClick={handleReset}>
-            <TodayButton />
-          </div>
-          <div className="nav-create-btn">
-            <span onClick={handleCreateModal}>
-              <CreateButton />
-            </span>
-          </div>
+      <div className="nav-logo-container">
+        <img src={EventLogo} alt="calendar" className="nav-logo" />
+        <span className="nav-title">Calendar</span>
       </div>
+      <div className="nav-end">
+        <div className="nav-btns" onClick={handleReset}>
+          <TodayButton />
+        </div>
+        <div className="nav-btns" onClick={handleCreateModal}>
+          <CreateButton />
+        </div>
       </div>
-
     </div>
   );
 };

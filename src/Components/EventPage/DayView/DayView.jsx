@@ -1,11 +1,9 @@
 import dayjs from "dayjs";
-import React, { useState, useRef, useContext, useEffect } from "react";
-import GlobalContext from "../../Context/GlobalContext";
-import GetHour from "../../Utils/Hour";
+import React, { useContext, useEffect } from "react";
+import GlobalContext from "../../../Context/GlobalContext";
+import GetHour from "../../../Utils/Hour";
 import "./DayView.scss";
-import Appointment from "../AppointmentCard/Appointment";
 import DayNavigator from "../DayNavigator/DayNavigator";
-import ViewEvent from "../Modal/ViewEventModal/ViewEvent";
 
 const DayView = () => {
   const arrayOfTime = GetHour();
@@ -24,33 +22,25 @@ const DayView = () => {
     new Date(currYearIndex, currMonthIndex, currDayIndex)
   );
 
-
   useEffect(() => {
     const currDate = CURRENT_DATE;
     const currenthour = dayjs();
     const endTime = currDate
       .add(currenthour.hour() + 1, "hours")
       .format("YYYY-MM-DDThh:mm");
-      // const endTime = currDate
-      // .add(currDate.hour()+1, "hours")
-      // .format("YYYY-MM-DDThh:mm");
+    // const endTime = currDate
+    // .add(currDate.hour()+1, "hours")
+    // .format("YYYY-MM-DDThh:mm");
     const startTime = currDate
       .add(currenthour.hour(), "hours")
       .format("YYYY-MM-DDThh:mm");
-      // const startTime = currDate
-      // // .add(currDate.hour()+1, "hours")
-      // .format("YYYY-MM-DDThh:mm");
+    // const startTime = currDate
+    // // .add(currDate.hour()+1, "hours")
+    // .format("YYYY-MM-DDThh:mm");
     const timeStamp = { startTime, endTime };
     setDaySelected(timeStamp);
   }, [CURRENT_DATE.date()]);
 
-  const [scroll, setScroll] = useState(false);
-  const scrollRef = useRef();
-
-  const handleScroll = () => {
-    const scrolledFromTop = scrollRef.current.scrollTop;
-    setScroll(scrolledFromTop > 12);
-  };
   const handleCreateModal = (hour) => {
     const currDate = CURRENT_DATE;
     const endTime = currDate
@@ -64,53 +54,29 @@ const DayView = () => {
     setShowModal(true);
   };
 
-
   return (
     <div className="day-view-parent">
-      <div className={`day-view-header ${scroll && "header-border"}`}>
-        <div className="day-view-content">
-          {/* <div className="event-date"> */}
-            {/* <span className="curr-date">{CURRENT_DATE.format("DD")}</span> */}
-            {/* <span>{CURRENT_DATE.format("dddd, MMM YYYY")}</span> */}
-          {/* </div> */}
-
-          {/* {currDateAppointments.length > 0 ? (
-            <div className="day-view-title">Scheduled Events</div>
-          ) : (
-            <div className="day-view-title">No Events Scheduled</div>
-          )} */}
-
-          <DayNavigator/>
-        </div>
+      <div className="day-view-header">
+        <DayNavigator />
       </div>
 
-      <div
-        className={`time-view ${scroll && "add-scroll"}`}
-        onScroll={handleScroll}
-        ref={scrollRef}
-      >
+      <div className="time-view">
         <div>
-        {arrayOfTime.map((hour, index) => (
-          <div className="time-container" key={index} >
-            <div className="time">
-              {
-              // hour.format("H") === "0"
-                // ?
-                 hour.format("HH:mm")
-                // :
-                //  hour.format("hh:mm A")
-                 }
+          {arrayOfTime.map((hour, index) => (
+            <div className="time-container" key={index}>
+              <div className="time-stamp">{hour.format("HH:mm")}</div>
+              <div className="dotted-lines"></div>
+              <div className="dotted-lines"></div>
+              <div className="dotted-lines"></div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
-        <div className="timeline-container">
-        {arrayOfTime.map((hour, index) => (
-          <div className="timeline" key={index} onClick={() => handleCreateModal(hour)}
-          >
 
-          </div>
-        ))}
+        <div className="timeline-container">
+          {arrayOfTime.map((hour, index) => (
+            <div className="timeline" key={index} onClick={() => handleCreateModal(hour)}></div>
+          ))}
+          
           {/* {
           currDateAppointments.map((event,index)=>
           (
