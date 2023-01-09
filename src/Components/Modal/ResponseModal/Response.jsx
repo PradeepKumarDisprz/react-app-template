@@ -31,9 +31,9 @@ function Response() {
                   <FontAwesomeIcon icon={faExclamation} className="error-symbol"/>
               </div>
 
-              <div className="error-code">
-                 😥😥😥
-                </div>
+              {/* <div className="error-code">
+                //  😥😥😥
+                </div> */}
                 
                 <div className="error-message">
                   {errorResponse.message.errorMessage}
@@ -49,7 +49,7 @@ function Response() {
               onClick={(e) => e.stopPropagation()}
             >
               <FontAwesomeIcon icon={faCheck} className="resp-check"/>
-              <div className="resp-txt">Request Successfull 😎!</div>
+              <div className="resp-txt">Request Successful !</div>
               <div className="resp-header">
                 <FontAwesomeIcon
                   icon={faXmark}

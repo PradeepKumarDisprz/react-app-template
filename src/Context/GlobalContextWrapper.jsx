@@ -21,7 +21,6 @@ const GlobalContextWrapper = (props) => {
   const [deleteEvent, setDeleteEvent] = useState(null);
   const [updateEvent, setUpdateEvent] = useState(null);
   const [eventUpdate, setEventUpdate] = useState(null);
-  const [eventsSeparated,setEventsSeparated]=useState(null);
 
   const handleGetByDate = async () => {
     try {
@@ -175,7 +174,6 @@ const GlobalContextWrapper = (props) => {
         deleteEvent,setDeleteEvent,
         updateEvent,setUpdateEvent,
         eventUpdate,setEventUpdate,
-        eventsSeparated,setEventsSeparated
       }}
     >
       {props.children}

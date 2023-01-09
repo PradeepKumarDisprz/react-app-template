@@ -6,13 +6,14 @@ import RequestLoader from "./Components/Modal/Loader/RequestLoader";
 import ViewEvent from "./Components/Modal/ViewEventModal/ViewEvent";
 
 const Modal = () => {
-  return (
+  return  createPortal(
     <>
       <CreateEvent />
       <Response/>
       <RequestLoader/>
       <ViewEvent/>
-    </>
+    </>,
+    document.getElementById("modal")
   );
 };
 

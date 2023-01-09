@@ -8,7 +8,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import GetMonth from "../../../Utils/Month";
 import dayjs from "dayjs";
-import GetWeek from "../../../Utils/Week";
 
 const DayNavigator = () => {
   const [currYear, setCurrYear] = useState(dayjs().year());

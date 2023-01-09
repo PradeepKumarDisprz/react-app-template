@@ -104,19 +104,3 @@ const CreateEvent = () => {
 
 export default CreateEvent;
 
-// onClick={(e) => e.stopPropagation()}
-
-
-// onSubmit={handleSubmit}
-
-// onClick={()=>setShowModal(false)}
-
-
-{/* <div className="color-labels">
-<span className="color-label-name">Color</span> 
- {COLOR_LABELS.map((color,index)=>(
-   <span key={index} className={`each-color ${color}`} onClick={()=>setColorChoosen(color)}>
-     {isColorChoosen===color&&<FontAwesomeIcon icon={faCheck} className="check-icon"/>}
-   </span>
- ))}
-</div> */}

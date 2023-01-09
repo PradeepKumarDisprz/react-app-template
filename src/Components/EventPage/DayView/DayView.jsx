@@ -98,39 +98,3 @@ const DayView = () => {
 
 export default DayView;
 
-{
-  /* {
-           currDateAppointments.map((event,index)=>
-          (
-            
-              <Appointment event={event} key={index}/>
-                        
-          )     
-        )} */
-}
-
-/* <div className="timeline-component">
-        <div className="time-component">
-            <div className="time">
-                12  AM
-            </div>
-        </div>
-        <div className="timeline-event">
-        
-        </div>
-    </div> */
-
-/* {currDateAppointments.length > 0 &&
-                currDateAppointments.map((meet) => (
-                  
-                  // dayjs(meet.appointmentStartTime).subtract(5,'hours').subtract(30,'minutes') >=
-                  //     hour &&
-                  //     dayjs(meet.appointmentEndTime).subtract(5,'hours').subtract(30,'minutes') <=
-                  //       hour && 
-                  <div key={meet.appointmentId} className="event" onClick={()=>{
-                    setViewEvent(meet)
-                  }}>
-                        <Appointment meet={meet} />
-                  </div>
-                
-                ))} */

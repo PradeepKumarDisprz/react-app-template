@@ -55,8 +55,9 @@ const SmallCalendar = () => {
   };
 
   const handleSelectedDay = (day) => {
+    const today=dayjs();
+    if(day>today){
     const month=day.month();
-    const iter=0;
       if (currMonthIndex != day.month()) {
         setCurrMonthIndex(day.month());
         setCurrYearIndex(day.year());
@@ -72,6 +73,7 @@ const SmallCalendar = () => {
       } else {
         setDaySelected(day);
       }
+    }
   };
   function getDayClass(day) {
     const nowDay = dayjs().format("DD MM YY");

@@ -22,7 +22,7 @@
       display: $display-property;
       align-items: $align-item;
       cursor: $cursor-pointer;
-      padding-left: 20px;
+      padding-left: 30px;
       .nav-logo {
         width: 40px;
         height: 40px;
@@ -35,7 +35,7 @@
     }
 
     .nav-day {
-      padding-left:50px;
+      padding-left:70px;
       button {
         @include buttonStyle;
         padding: 10px 15px;
@@ -47,7 +47,7 @@
   .nav-end {
     display: $display-property;
     .nav-btns {
-      padding-right: 30px;
+      padding-right: 40px;
     }
   }
 }

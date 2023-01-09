@@ -3,20 +3,22 @@ import GlobalContext from "../../Context/GlobalContext";
 import "./NavBar.scss";
 import EventLogo from "../../Assests/EventLogo.svg";
 import { TodayButton, CreateButton } from "../Buttons/Buttons";
+import CreateEvent from "../Modal/CreateEventModal/CreateEvent";
 import dayjs from "dayjs";
 
 const NavBar = () => {
+  const [showModal,setShowModal]=useState(false);
+
   const {
     currMonthIndex,
     currYearIndex,
     currDayIndex,
     setCurrMonthIndex,
     setCurrDayIndex,
-    currWeekIndex,
     setCurrWeekIndex,
     setDaySelected,
     setCurrYearIndex,
-    setShowModal,
+    // setShowModal,
   } = useContext(GlobalContext);
 
   const handleCreateModal = () => {
@@ -35,11 +37,12 @@ const NavBar = () => {
   };
 
   return (
+    <>
     <div className="nav-bar">
       <div className="nav-start">
       <div className="nav-logo-container">
         <img src={EventLogo} alt="calendar" className="nav-logo" />
-        <span className="nav-title">Calendar</span>
+        <span className="nav-title">Simple Calendar</span>
       </div>
       <div className="nav-day">
         <button>{dayjs(new Date(currYearIndex,currMonthIndex,currDayIndex)).format("MMMM DD, YYYY")}</button>
@@ -54,6 +57,8 @@ const NavBar = () => {
         </div>
       </div>
     </div>
+    {showModal&&<CreateEvent/>}
+    </>
   );
 };
 
