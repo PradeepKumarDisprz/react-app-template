@@ -44,7 +44,7 @@ export function CloseButton() {
 //Cancel Button
 export function CancelButton() {
   return (
-    <button className="cancel-btn">
+    <button type="submit" className="cancel-btn">
       <span>Cancel</span>
     </button>
   );

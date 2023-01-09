@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 
 const Appointment = ({ event }) => {
   const { appointmentEndTime, appointmentStartTime, appointmentTitle } = event;
-  const HEIGHT = 81.1;
+  const HEIGHT = 81.05;
   let fontValue = 12;
   let heightValue = 0;
   let paddingTop = 0;
@@ -18,7 +18,7 @@ const Appointment = ({ event }) => {
   const TotalDuration = hourDuration + minutesDuration;
 
   if (TotalDuration >= 60) {
-    heightValue = (TotalDuration / 60) * 79;
+    heightValue = (TotalDuration / 60) * 80.1;
     paddingTop = 10;
     fontValue = 14;
     fontWeight = 600;

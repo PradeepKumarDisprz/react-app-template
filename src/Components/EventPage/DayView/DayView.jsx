@@ -4,6 +4,7 @@ import GlobalContext from "../../../Context/GlobalContext";
 import GetHour from "../../../Utils/Hour";
 import "./DayView.scss";
 import DayNavigator from "../DayNavigator/DayNavigator";
+import Appointment from "../../AppointmentCard/Appointment";
 
 const DayView = () => {
   const arrayOfTime = GetHour();
@@ -76,9 +77,9 @@ const DayView = () => {
           {arrayOfTime.map((hour, index) => (
             <div className="timeline" key={index} onClick={() => handleCreateModal(hour)}></div>
           ))}
-          
-          {/* {
-          currDateAppointments.map((event,index)=>
+          <div>
+          {
+          currDateAppointments?.map((event,index)=>
           (
             <div key={index} onClick={()=>{
               setViewEvent(event)
@@ -86,7 +87,9 @@ const DayView = () => {
                <Appointment event={event}/>
             </div>             
           )     
-         )}  */}
+         )} 
+          </div>
+         
         </div>
       </div>
     </div>

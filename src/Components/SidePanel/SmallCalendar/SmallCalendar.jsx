@@ -21,12 +21,12 @@ const SmallCalendar = () => {
     currYearIndex,
     setCurrYearIndex,
     currMonthIndex,
+    currWeekIndex,
+    setCurrWeekIndex,
     currDayIndex,
     setCurrMonthIndex,
     setCurrDayIndex,
   } = useContext(GlobalContext);
-
-  //daySelected=+1
 
   useEffect(() => {
     setDaysOfCurrMonth(GetMonth(currMonth, currYear));
@@ -36,6 +36,7 @@ const SmallCalendar = () => {
     setCurrMonth(currMonthIndex);
     setCurrYear(currYearIndex);
   }, [currMonthIndex, currYearIndex]);
+  
 
   const handlePrevYear = () => {
     setCurrYear(currYear - 1);
@@ -54,40 +55,46 @@ const SmallCalendar = () => {
   };
 
   const handleSelectedDay = (day) => {
-    const today = dayjs();
-    if (day > today) {
+    const month=day.month();
+    const iter=0;
       if (currMonthIndex != day.month()) {
         setCurrMonthIndex(day.month());
         setCurrYearIndex(day.year());
       }
       setCurrDayIndex(day.date());
-
+      if(currWeekIndex!=day.week()-1)
+      {
+        setCurrWeekIndex(day.week()-1-month*4);
+        console.log(day.week())
+      }
       if (day === daySelected) {
         setDaySelected("");
       } else {
         setDaySelected(day);
       }
-    }
   };
   function getDayClass(day) {
-    const format = "DD MM YY";
-    const nowDay = dayjs().format(format);
-    const currDay = day.format(format);
-    // const selectedDay = daySelected && daySelected.format(format);
+    const nowDay = dayjs().format("DD MM YY");
+    const currDay = day.format("DD MM YY");
     const fadeDay = dayjs(new Date(currYear, currMonth));
 
     if (nowDay === currDay) {
       return "curr-day-bg";
-    } else if (
+    }
+    else if (
       day.date() === currDayIndex &&
-      day.month() === currMonthIndex &&
-      daySelected
-    ) 
+      day.month() === currMonthIndex 
+      &&daySelected
+    )
     {
       return "other-day-bg";
-    } else if (fadeDay.month() !== day.month()) {
+    }
+    else if (fadeDay.month() !== day.month()) 
+    {
       return "faded-bg";
-    } else {
+    } 
+    else 
+    {
       return "";
     }
   }
@@ -96,28 +103,29 @@ const SmallCalendar = () => {
     <div className="calendar">
       <header className="cal-header-container">
         <div className="cal-header">
-        <button onClick={handlePrevMonth}>
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-
-        <div className="month-year">
-          <button onClick={handlePrevYear}>
-            <FontAwesomeIcon icon={faAnglesLeft} />
+          <button onClick={handlePrevMonth}>
+            <FontAwesomeIcon icon={faChevronLeft} />
           </button>
-          <span>
-            {dayjs(new Date(currYear, currMonth))
-              .format(" MMMM, YYYY")
-              .toString()}
-          </span>
 
-          <button onClick={handleNextYear}>
-            <FontAwesomeIcon icon={faAnglesRight} />
+          <div className="month-year">
+            <button onClick={handlePrevYear}>
+              <FontAwesomeIcon icon={faAnglesLeft} />
+            </button>
+
+            <span>
+              {dayjs(new Date(currYear, currMonth))
+                .format(" MMMM, YYYY")
+                .toString()}
+            </span>
+
+            <button onClick={handleNextYear}>
+              <FontAwesomeIcon icon={faAnglesRight} />
+            </button>
+          </div>
+
+          <button onClick={handleNextMonth}>
+            <FontAwesomeIcon icon={faChevronRight} />
           </button>
-        </div>
-
-        <button onClick={handleNextMonth}>
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
         </div>
         <div className="cal-week-days">
           {daysOfCurrMonth[0].map((day, index) => (
@@ -128,7 +136,7 @@ const SmallCalendar = () => {
         </div>
       </header>
 
-      <div className="cal-month">      
+      <div className="cal-month">
         <div className="cal-days">
           {daysOfCurrMonth.map((row, index) => (
             <React.Fragment key={index}>
@@ -153,28 +161,3 @@ const SmallCalendar = () => {
 
 export default SmallCalendar;
 
-// <div className="calendar">
-//       <header className="cal-header">
-//         <button onClick={monthView?handlePrevMonth:handlePrevDay}>
-//           <FontAwesomeIcon icon={faChevronLeft} />
-//         </button>
-
-//         <div className="month-year">
-//           <button onClick={handlePrevYear}>
-//             <FontAwesomeIcon icon={faAnglesLeft} />
-//           </button>
-//           <span>
-//             {dayjs(new Date(currYear, currMonth))
-//               .format(" MMMM, YYYY")
-//               .toString()}
-//           </span>
-
-//           <button onClick={handleNextYear}>
-//             <FontAwesomeIcon icon={faAnglesRight} />
-//           </button>
-//         </div>
-
-//         <button onClick={monthView?handleNextMonth:handleNextDay}>
-//           <FontAwesomeIcon icon={faChevronRight} />
-//         </button>
-//       </header>

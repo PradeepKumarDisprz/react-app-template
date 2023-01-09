@@ -1,0 +1,202 @@
+// // import "./DayNavigator.scss";
+// // import React, { useState, useContext, useEffect } from "react";
+// // import GlobalContext from "../../../Context/GlobalContext";
+// // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// // import {
+// //   faChevronLeft,
+// //   faChevronRight,
+// // } from "@fortawesome/free-solid-svg-icons";
+// // import GetMonth from "../../../Utils/Month";
+// // import dayjs from "dayjs";
+// // import GetWeek from "../../../Utils/Week";
+
+// // const DayNavigator = () => {
+ 
+// //   const [currYear, setCurrYear] = useState(dayjs().year());
+// //   const [currMonth, setCurrMonth] = useState(dayjs().month());
+// //   const [daySelected, setDaySelected] = useState(dayjs());
+// //   const [rowIndex, setRowIndex] = useState(0);
+// //   const [daysOfCurrMonth, setDaysOfCurrMonth] = useState(GetMonth(currMonth,currYear));
+// //   const [week,setWeek]=useState(GetWeek());
+// //   const {
+// //     setCurrYearIndex,
+// //     currMonthIndex,
+// //     currYearIndex,
+// //     currDayIndex,
+// //     setCurrMonthIndex,
+// //     setCurrDayIndex,
+// //     currWeekIndex,
+// //     setCurrWeekIndex,
+// //   } = useContext(GlobalContext);
+
+// //   // const dayViewDate = dayjs(
+// //   //   new Date(currYearIndex, currMonthIndex, currDayIndex)
+// //   // );
+
+// //   // useEffect(() => {
+// //   //   setDaysOfCurrMonth(GetMonth(currMonth, currYear));
+// //   // }, [currMonth, currYear]);
+
+// //   // useEffect(() => {
+// //   //   setCurrMonth(currMonthIndex);
+// //   //   setCurrYear(currYearIndex);
+// //   // }, [currMonthIndex, currYearIndex]);
+
+// //   // useEffect(() => {
+// //   //   if (currMonthIndex != dayViewDate.month()) {
+// //   //     setCurrMonthIndex(dayViewDate.month());
+// //   //     setCurrDayIndex(dayViewDate.date());
+// //   //     setCurrYearIndex(dayViewDate.year());
+// //   //   }
+// //   //   if (currWeekIndex != dayViewDate.week()) {
+// //   //     setCurrWeekIndex(dayViewDate.week()-1)
+// //   //     setRowIndex(dayViewDate.week()-1);
+// //   //   }
+    
+// //   // }, [currDayIndex]);
+
+// //   useEffect(() => {
+// //     if (currWeekIndex != rowIndex) {
+// //       setRowIndex(currWeekIndex);
+// //     }
+// //     const i=GetWeek()
+// //     console.log(i[2]);
+// //     setDaysOfCurrMonth(GetMonth(currMonthIndex, currYearIndex));
+// //   }, [currMonthIndex,currWeekIndex]);
+
+// //   const handlePrevWeek = () => {
+// //     if (rowIndex - 1 < 0) {
+// //       // if(rowIndex-1<0&&currMonthIndex==0)
+// //       // {
+// //       //   setCurrMonthIndex(currMonthIndex-1);
+// //       //   setCurrYearIndex(currYearIndex-1);
+// //       // }
+// //       setCurrMonthIndex(currMonthIndex - 1);
+// //       // setRowIndex(4);
+// //       setCurrWeekIndex(4);
+// //       // setDaysOfCurrMonth(GetMonth(currMonthIndex-1))
+// //     } 
+// //     else {
+// //       setRowIndex(rowIndex - 1);
+// //       setCurrWeekIndex(rowIndex - 1);
+// //     }
+// //   };
+
+// //   const handleNextWeek = () => {
+// //     if (rowIndex + 1 > 4) {
+// //       // if(rowIndex+1>4&&currMonthIndex==11)
+// //       // {
+// //       //   setCurrMonthIndex(currMonthIndex+1);
+// //       //   setCurrYearIndex(currYearIndex+1);
+// //       // }
+
+// //       setCurrMonthIndex(currMonthIndex + 1);
+// //       //       setRowIndex(0);
+// //       setCurrWeekIndex(1);
+      
+// //       // setDaysOfCurrMonth(GetMonth(currMonthIndex+1))
+// //     } 
+// //     else {
+// //       setRowIndex(rowIndex + 1);
+// //       setCurrWeekIndex(rowIndex + 1);
+// //     }
+// //   };
+
+// //   const handleSelectedDay = (day) => {
+// //     if (currMonthIndex != day.month()) {
+// //       setCurrMonthIndex(day.month());
+// //       setCurrYearIndex(day.year());
+// //     }
+// //     setCurrDayIndex(day.date());
+// //     // if (day === daySelected) {
+// //     //   setDaySelected("");
+// //     // } else {
+// //       setDaySelected(day);
+// //     // }
+// //   };
+
+// //   function getDayClass(day) {
+// //     if (day.date() === currDayIndex &&
+// //     // day.month() === currMonthIndex&&
+// //     daySelected
+// //     ) 
+// //     {
+// //       return "curr-day-in-week-bg";
+// //     }
+// //   }
+
+// //   return (
+// //     <div className="week-navigator">
+// //       <button onClick={handlePrevWeek}>
+// //         <FontAwesomeIcon icon={faChevronLeft} />
+// //       </button>
+// //       <div className="day-view-week">
+// //         {week[rowIndex]?.map((day, index) => (
+// //           <div
+// //             className={`day-view-day ${getDayClass(day)}`}
+// //             onClick={() => {
+// //               handleSelectedDay(day);
+// //             }}
+// //             key={index}
+// //           >
+// //             <div className="week-day-name">{day.format("ddd")}</div>
+// //             <div className="week-date">{day.format("DD")}</div>
+// //           </div>
+// //         ))}
+// //       </div>
+// //       <button onClick={handleNextWeek}>
+// //         <FontAwesomeIcon icon={faChevronRight} />
+// //       </button>
+// //     </div>
+// //   );
+// // };
+
+// // export default DayNavigator;
+
+
+
+
+// import dayjs from "dayjs";
+
+// const GetMonth = (month = dayjs().month(), year = dayjs().year()) => {
+//     month = Math.floor(month);
+//     const firstDayOfTheMonth = dayjs(new Date(year, month, 1)).day();
+//     let currentMonthCount = 0 - firstDayOfTheMonth;
+//     const daysMatrix = new Array(5).fill([]).map(() => {
+//         return new Array(7).fill(0).map(() => {
+//             currentMonthCount++;
+//             return dayjs(new Date(year, month, currentMonthCount));
+//         });
+//     });
+//     return daysMatrix;
+// }
+
+// const GetMonths = (month = dayjs().month(), year = dayjs().year()) => {
+//     month = Math.floor(month);
+//     const firstDayOfTheMonth = dayjs(new Date(year, month, 1)).day();
+//     let currentMonthCount = 0 - firstDayOfTheMonth;
+//     const daysMatrix = new Array(5).fill([]).map(() => {
+//         return new Array(7).fill(0).map(() => {
+//             currentMonthCount++;
+//             return dayjs(new Date(year, month, currentMonthCount));
+//         });
+//     });
+//     return daysMatrix;
+// }
+
+// const GetWeek = (year=dayjs().year()) => {
+//     const arr=[]
+//    for(var i=0;i<12;i++)
+//    {
+//     const j=(GetMonths(i,year));
+//     for(var t=0;t<5;t++)
+//     {
+//         arr.push(j[t]);
+//     }
+//    }
+//    return arr;
+// }
+
+
+
+// export default GetWeek;

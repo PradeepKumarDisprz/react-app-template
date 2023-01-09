@@ -8,107 +8,107 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import GetMonth from "../../../Utils/Month";
 import dayjs from "dayjs";
+import GetWeek from "../../../Utils/Week";
 
 const DayNavigator = () => {
   const [currYear, setCurrYear] = useState(dayjs().year());
   const [currMonth, setCurrMonth] = useState(dayjs().month());
   const [daySelected, setDaySelected] = useState(dayjs());
-  const [daysOfCurrMonth, setDaysOfCurrMonth] = useState(GetMonth(currMonth,currYear));
   const [rowIndex, setRowIndex] = useState(0);
-
+  const [daysOfCurrMonth, setDaysOfCurrMonth] = useState(
+    GetMonth(currMonth, currYear)
+  );
   const {
-    currYearIndex,
     setCurrYearIndex,
     currMonthIndex,
+    currYearIndex,
     currDayIndex,
     setCurrMonthIndex,
     setCurrDayIndex,
+    currWeekIndex,
+    setCurrWeekIndex,
   } = useContext(GlobalContext);
-
-  const dayViewDate = dayjs(
-    new Date(currYearIndex, currMonthIndex, currDayIndex)
-  );
 
   useEffect(() => {
     setDaysOfCurrMonth(GetMonth(currMonth, currYear));
   }, [currMonth, currYear]);
 
+  useEffect(() => {
+    setCurrMonth(currMonthIndex);
+    setCurrYear(currYearIndex);
+  }, [currMonthIndex, currYearIndex]);
+
 
   useEffect(() => {
-    if (currMonthIndex != dayViewDate.month()) {
-      setCurrMonthIndex(dayViewDate.month());
-      setCurrDayIndex(dayViewDate.date());
-      setCurrYearIndex(dayViewDate.year());
+    if (currWeekIndex != rowIndex) {
+      setRowIndex(currWeekIndex);
     }
-  }, [currDayIndex]);
+    setDaysOfCurrMonth(GetMonth(currMonthIndex, currYearIndex));
+  }, [currMonthIndex, currWeekIndex]);
 
-  const handlePrevDay = () => {
-    // if((dayViewDate.format("ddd"))==="Sun"&&(dayViewDate.format("D")=="1")||(dayViewDate.format("ddd"))==="Sat"&&(dayViewDate.format("D")==))
-    if(dayViewDate.format("ddd")==="Sun")
-    {
-      setRowIndex(rowIndex-1) 
+
+
+  const handlePrevWeek = () => {
+    if (rowIndex - 1 < 0) {
+      setCurrMonthIndex(currMonthIndex - 1);
+      setCurrWeekIndex(4);
+    } else {
+      setRowIndex(rowIndex - 1);
+      setCurrWeekIndex(rowIndex - 1);
     }
-    // setTimeout(() => {
-      setCurrDayIndex(currDayIndex - 1);
-    // }, 500);
   };
 
-  const handleNextDay = () => {
-    if(dayViewDate.format("ddd")=="Sat")
-    {
-      setRowIndex(rowIndex+1) 
+  const handleNextWeek = () => {
+    if (rowIndex + 1 > 4) {
+      setCurrMonthIndex(currMonthIndex + 1);
+      setCurrWeekIndex(0);
+    } else {
+      setRowIndex(rowIndex + 1);
+      setCurrWeekIndex(rowIndex + 1);
     }
-    // setTimeout(() => {
-      setCurrDayIndex(currDayIndex + 1);
-    // }, 500);
   };
 
   const handleSelectedDay = (day) => {
-      // if (currMonthIndex != day.month()) {
-      //   setCurrMonthIndex(day.month());
-      //   setCurrYearIndex(day.year());
-      // }
-      setCurrDayIndex(day.date());
-
-      if (day === daySelected) {
-        setDaySelected("");
-      } 
-      else {
-        setDaySelected(day);
-      }
+    if (currMonthIndex != day.month()) {
+      setCurrMonthIndex(day.month());
+      setCurrYearIndex(day.year());
+    }
+    setCurrDayIndex(day.date());
+    setDaySelected(day);
   };
+
   function getDayClass(day) {
-    const today = dayjs()
     if (
       day.date() === currDayIndex &&
-      day.month() === currMonthIndex &&
       daySelected
     ) {
       return "curr-day-in-week-bg";
-    } 
-    else if(day.date()<today.date())
-    {
-      return "faded-day-in-week-bg"
     }
   }
 
   return (
-      <div className="week-navigator">
-        <button onClick={handlePrevDay}>
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-        <div className="day-view-week">
-          {daysOfCurrMonth[rowIndex].map((day, index) => (
-            <div className={`day-view-day ${getDayClass(day)}`} onClick={() => {handleSelectedDay(day);}} key={index}>
-              <div className="week-day-name" >{day.format("ddd")}</div>
-              <div className="week-date">{day.format("DD")}</div>
-            </div>
-          ))}
-        </div>
-        <button onClick={handleNextDay}>
-          <FontAwesomeIcon icon={faChevronRight}/>
-        </button>
+    <div className="week-navigator">
+      <button onClick={handlePrevWeek}>
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </button>
+      <div className="day-view-week">
+        {daysOfCurrMonth[rowIndex]?.map((day, index) => (
+          <div
+            className={`day-view-day ${getDayClass(day)}`}
+            onClick={() => {
+              handleSelectedDay(day);
+            }}
+            key={index}
+          >
+            <div className="week-day-name">{day.format("ddd")}</div>
+            <div className="week-date">{day.format("DD")}</div>
+          </div>
+        ))}
       </div>
+      <button onClick={handleNextWeek}>
+        <FontAwesomeIcon icon={faChevronRight} />
+      </button>
+    </div>
   );
 };
 

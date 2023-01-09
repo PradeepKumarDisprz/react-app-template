@@ -1,11 +1,12 @@
-@import "../ResusableStyles/variable.scss";
+@import "../ReUsableStyles/variable.scss";
 
 .appointmentContent{
     z-index: 0;
     border-radius: 10px;
     display:$display-property;
     justify-content: $space-between ;
-    width: 100%;
+    width: 98%;
+    left:10px;
     color: #000000;
     background-color: $container-background-color;
     // background-color: #f2f3f7;

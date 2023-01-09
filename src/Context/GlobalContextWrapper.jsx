@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 import axios from "axios";
+var weekOfYear = require('dayjs/plugin/weekOfYear')
+dayjs.extend(weekOfYear)
 
 const GlobalContextWrapper = (props) => {
   const [currYearIndex, setCurrYearIndex] = useState(dayjs().year());
   const [currMonthIndex, setCurrMonthIndex] = useState(dayjs().month());
   const [currDayIndex, setCurrDayIndex] = useState(dayjs().date());
+  const [currWeekIndex, setCurrWeekIndex] = useState(dayjs(currYearIndex,currMonthIndex,currDayIndex).week());
   const [daySelected, setDaySelected] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [showRequestSuccess, setShowRequestSuccess] = useState(false);
@@ -14,8 +17,6 @@ const GlobalContextWrapper = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [postEvent, setPostEvent] = useState(null);
   const [currDateAppointments, setCurrDateAppointments] = useState([]);
-  const [totalAppointments, setTotalAppointments] = useState(null);
-  const [searchInput, setSearchInput] = useState(null);
   const [viewEvent, setViewEvent] = useState(null);
   const [deleteEvent, setDeleteEvent] = useState(null);
   const [updateEvent, setUpdateEvent] = useState(null);
@@ -31,7 +32,7 @@ const GlobalContextWrapper = (props) => {
           ).format("YYYY-MM-DD"),
         },
       });
-      setCurrDateAppointments(response.data.appointments);
+      setCurrDateAppointments(response.data);
       console.log(response.data);
     } catch (err) {
       console.log(`Error: ${err.message}`);
@@ -43,7 +44,7 @@ const GlobalContextWrapper = (props) => {
   //get by date
   useEffect(() => {
     if (currDayIndex != null) {
-      setIsLoading(true);
+      // setIsLoading(true);
       setTimeout(() => {
         handleGetByDate();
       }, 500);
@@ -54,7 +55,7 @@ const GlobalContextWrapper = (props) => {
   useEffect(() => {
     const handleDeleteEvent = async () => {
       try {
-        const response = await axios.delete(`http://localhost:5169/v1/appointments/${deleteEvent}`);
+        const response = await axios.delete(`http://localhost:5169/v1/api/appointments/${deleteEvent}`);
         setShowRequestSuccess(true);
         setDeleteEvent(null);
         console.log(response.data);
@@ -83,12 +84,13 @@ const GlobalContextWrapper = (props) => {
   useEffect(() => {
     const handlePost = async () => {
       try {
-        const response = await axios.post("http://localhost:5169/v1/appointments", postEvent);
+        const response = await axios.post("http://localhost:5169/v1/api/appointments", postEvent);
         if (response.data) {
           Object.assign(postEvent, {
-            appointmentId: response.data.appointmentId,
+            appointmentId: response.data.id,
           });
-          setCurrDateAppointments([...currDateAppointments, postEvent]);
+          // setCurrDateAppointments([...currDateAppointments, postEvent]);
+          // console.log(currDateAppointments);
           setShowModal(false);
           setShowRequestSuccess(true);
           setPostEvent(null);
@@ -103,6 +105,7 @@ const GlobalContextWrapper = (props) => {
         } else console.log(`Error: ${err.message}`);
       } finally {
         setIsLoading(false);
+        handleGetByDate();
       }
     };
   
@@ -118,7 +121,7 @@ const GlobalContextWrapper = (props) => {
    useEffect(() => {
     const handleUpdate = async () => {
       try {
-        const response = await axios.put(`http://localhost:5169/v1/appointments/${eventUpdate.appointmentId}`,eventUpdate.eventSubmitted );
+        const response = await axios.put(`http://localhost:5169/v1/api/appointments/${eventUpdate.appointmentId}`,eventUpdate.eventSubmitted );
         if (response.data) {
           Object.assign(postEvent, {
             appointmentId: response.data.appointmentId,
@@ -160,13 +163,13 @@ const GlobalContextWrapper = (props) => {
         currYearIndex,setCurrYearIndex,
         currMonthIndex,setCurrMonthIndex,
         currDayIndex,setCurrDayIndex,
-        showModal,setShowModal,
+        currWeekIndex, setCurrWeekIndex,
         daySelected,setDaySelected,
+        showModal,setShowModal,
         postEvent,setPostEvent,
         showRequestSuccess,setShowRequestSuccess,
         errorResponse,setErrorResponse,
         isLoading,setIsLoading,
-        searchInput, setSearchInput,
         currDateAppointments,setCurrDateAppointments,
         viewEvent,setViewEvent,
         deleteEvent,setDeleteEvent,

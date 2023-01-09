@@ -1,38 +1,53 @@
 @import "../ReUsableStyles/variable.scss";
+@import "../ReUsableStyles/mixin.scss";
 
 .nav-bar {
-  position:$position-fixed;
-  top:0;
-  z-index:5;
+  position: $position-fixed;
+  top: 0;
+  z-index: 5;
   width: 100%;
   border-bottom: 1px solid $border-color;
-  background-color:$background-color;
-  display:$display-property;
+  background-color: $background-color;
+  display: $display-property;
   justify-content: $space-between;
   align-items: $align-item;
   padding: 20px 0px;
-  
+
+  .nav-start {
+    display: $display-property;
+    align-items: $align-item;
+    justify-content: $align-item;
+
     .nav-logo-container {
-      display:$display-property;
+      display: $display-property;
       align-items: $align-item;
-      cursor:$cursor-pointer;
-      padding-left: 30px;
+      cursor: $cursor-pointer;
+      padding-left: 20px;
       .nav-logo {
         width: 40px;
         height: 40px;
-        padding-bottom: 5px;
+        // padding-bottom: 5px;
       }
       .nav-title {
-        color:$font-style-color;
-        font-size: 24px;
+        color: $font-style-color;
+        font-size: 34px;
       }
     }
-    .nav-end
-    {
-      display: $display-property;
-      .nav-btns
-      {
-        padding-right: 30px;
+
+    .nav-day {
+      padding-left:50px;
+      button {
+        @include buttonStyle;
+        padding: 10px 15px;
+        cursor: default;
       }
+    
     }
+  }
+  .nav-end {
+    display: $display-property;
+    .nav-btns {
+      padding-right: 30px;
+    }
+  }
 }
