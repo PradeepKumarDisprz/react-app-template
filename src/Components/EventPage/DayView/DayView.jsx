@@ -29,15 +29,9 @@ const DayView = () => {
     const endTime = currDate
       .add(currenthour.hour() + 1, "hours")
       .format("YYYY-MM-DDThh:mm");
-    // const endTime = currDate
-    // .add(currDate.hour()+1, "hours")
-    // .format("YYYY-MM-DDThh:mm");
     const startTime = currDate
       .add(currenthour.hour(), "hours")
       .format("YYYY-MM-DDThh:mm");
-    // const startTime = currDate
-    // // .add(currDate.hour()+1, "hours")
-    // .format("YYYY-MM-DDThh:mm");
     const timeStamp = { startTime, endTime };
     setDaySelected(timeStamp);
   }, [CURRENT_DATE.date()]);

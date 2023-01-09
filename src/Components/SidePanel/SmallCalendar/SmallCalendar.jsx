@@ -57,17 +57,16 @@ const SmallCalendar = () => {
   const handleSelectedDay = (day) => {
     const today=dayjs();
     if(day>today){
-    const month=day.month();
       if (currMonthIndex != day.month()) {
         setCurrMonthIndex(day.month());
         setCurrYearIndex(day.year());
       }
       setCurrDayIndex(day.date());
-      if(currWeekIndex!=day.week()-1)
-      {
-        setCurrWeekIndex(day.week()-1-month*4);
-        console.log(day.week())
-      }
+      // if(currWeekIndex!=day.week()-1)
+      // {
+      //   setCurrWeekIndex(day.week()-1-day.month()*4);
+      //   console.log(day.week())
+      // }
       if (day === daySelected) {
         setDaySelected("");
       } else {
@@ -105,12 +104,12 @@ const SmallCalendar = () => {
     <div className="calendar">
       <header className="cal-header-container">
         <div className="cal-header">
-          <button onClick={handlePrevMonth}>
+          <button title="prev-month" onClick={handlePrevMonth}>
             <FontAwesomeIcon icon={faChevronLeft} />
           </button>
 
           <div className="month-year">
-            <button onClick={handlePrevYear}>
+            <button title="prev-year" onClick={handlePrevYear}>
               <FontAwesomeIcon icon={faAnglesLeft} />
             </button>
 
@@ -120,12 +119,12 @@ const SmallCalendar = () => {
                 .toString()}
             </span>
 
-            <button onClick={handleNextYear}>
+            <button title="next-year" onClick={handleNextYear}>
               <FontAwesomeIcon icon={faAnglesRight} />
             </button>
           </div>
 
-          <button onClick={handleNextMonth}>
+          <button title="next-month" onClick={handleNextMonth}>
             <FontAwesomeIcon icon={faChevronRight} />
           </button>
         </div>

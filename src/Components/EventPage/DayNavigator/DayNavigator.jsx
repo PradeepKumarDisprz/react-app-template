@@ -10,12 +10,10 @@ import GetMonth from "../../../Utils/Month";
 import dayjs from "dayjs";
 
 const DayNavigator = () => {
-  const [currYear, setCurrYear] = useState(dayjs().year());
-  const [currMonth, setCurrMonth] = useState(dayjs().month());
   const [daySelected, setDaySelected] = useState(dayjs());
   const [rowIndex, setRowIndex] = useState(0);
   const [daysOfCurrMonth, setDaysOfCurrMonth] = useState(
-    GetMonth(currMonth, currYear)
+    GetMonth()
   );
   const {
     setCurrYearIndex,
@@ -27,16 +25,6 @@ const DayNavigator = () => {
     currWeekIndex,
     setCurrWeekIndex,
   } = useContext(GlobalContext);
-
-  useEffect(() => {
-    setDaysOfCurrMonth(GetMonth(currMonth, currYear));
-  }, [currMonth, currYear]);
-
-  useEffect(() => {
-    setCurrMonth(currMonthIndex);
-    setCurrYear(currYearIndex);
-  }, [currMonthIndex, currYearIndex]);
-
 
   useEffect(() => {
     if (currWeekIndex != rowIndex) {
@@ -87,7 +75,7 @@ const DayNavigator = () => {
 
   return (
     <div className="week-navigator">
-      <button onClick={handlePrevWeek}>
+      <button title="prev-week" onClick={handlePrevWeek}>
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
       <div className="day-view-week">
@@ -99,12 +87,12 @@ const DayNavigator = () => {
             }}
             key={index}
           >
-            <div className="week-day-name">{day.format("ddd")}</div>
+            <div className="week-day-name">{day.format("DD")=="01"&&day.format("MMM")+" "+day.format("ddd")||day.format("ddd")}</div>
             <div className="week-date">{day.format("DD")}</div>
           </div>
         ))}
       </div>
-      <button onClick={handleNextWeek}>
+      <button title="next-week" onClick={handleNextWeek}>
         <FontAwesomeIcon icon={faChevronRight} />
       </button>
     </div>
