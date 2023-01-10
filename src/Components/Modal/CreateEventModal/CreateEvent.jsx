@@ -20,6 +20,8 @@ const CreateEvent = () => {
   useEffect(()=>
   { setStartTime(daySelected.startTime)
     setEndTime(daySelected.endTime)
+    settitle("");
+    setDescription("");
   },[daySelected])
 
   const handleSubmit=(e)=>
@@ -35,14 +37,9 @@ const CreateEvent = () => {
         appointmentEndTime:endTime
       } 
     apiDispatch({type:apiActions.POST_EVENT,payload:eventSubmitted});
-    settitle("");
-    setDescription("");
-    setStartTime("");
-    setEndTime("");
-    // ViewEvent==null?modalDispatch({type:actions.OPEN_ADD_EVENT}): 
-    modalDispatch({type:actions.CLOSE_ADD_EVENT});
     }
   }
+
   return createPortal(
     <>
       {
@@ -67,8 +64,10 @@ const CreateEvent = () => {
 
             <div className="create-popup-btns">
               <span onClick={() => modalDispatch({type:actions.CLOSE_ADD_EVENT})} className="cancel-btn-create"><CancelButton /></span>
-              <span><SaveButton/></span>
-            </div>
+                  <button type="submit" onSubmit={handleSubmit} className="save-btn">
+                   <span>Save</span>
+                  </button>
+             </div>
 
           </form>
         </div>

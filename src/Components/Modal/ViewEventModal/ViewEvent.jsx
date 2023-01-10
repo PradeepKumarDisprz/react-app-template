@@ -60,8 +60,8 @@ const ViewEvent = ({viewEvent,handleViewEvent}) => {
                       <div>
                         <span className="txt">Time</span>
                         {dayjs(viewEvent.appointmentStartTime)
-                          .format(" hh:mm a")+" - "+dayjs(viewEvent.appointmentEndTime)
-                          .format(" hh:mm a")}
+                          .format(" HH:mm a")+" - "+dayjs(viewEvent.appointmentEndTime)
+                          .format(" HH:mm a")}
                       </div>
                     )}
                   </div>

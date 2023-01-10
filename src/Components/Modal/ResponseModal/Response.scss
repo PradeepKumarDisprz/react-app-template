@@ -51,6 +51,8 @@
 
 .error-pop-up-overlay {
   @include overlay;
+  // align-items: flex-start;
+  // padding-top: 20px;
  
 
   .error-pop-up-box {

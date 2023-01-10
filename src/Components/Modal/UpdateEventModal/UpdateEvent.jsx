@@ -43,11 +43,6 @@ const UpdateEvent = ({event,setShowUpdateModal}) => {
         eventSubmitted,
       };
       apiDispatch({type:apiActions.UPDATE_EVENT,payload:event});
-      settitle("");
-      setDescription("");
-      setStartTime("");
-      setEndTime("");
-      modalDispatch({ type: actions.CLOSE_ADD_EVENT });
     }
   };
   return createPortal(
