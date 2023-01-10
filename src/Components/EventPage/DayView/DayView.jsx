@@ -1,27 +1,34 @@
 import dayjs from "dayjs";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../../Context/GlobalContext";
 import GetHour from "../../../Utils/Hour";
 import "./DayView.scss";
 import DayNavigator from "../DayNavigator/DayNavigator";
 import Appointment from "../../AppointmentCard/Appointment";
+import { actions } from "../../../Reducer/ModalReducer";
+import ViewEvent from "../../Modal/ViewEventModal/ViewEvent";
 
 const DayView = () => {
+  const [viewEvent,setViewEvent]=useState(null);
   const arrayOfTime = GetHour();
   const {
     currDayIndex,
     currMonthIndex,
     currYearIndex,
-    setShowModal,
     currDateAppointments,
     daySelected,
     setDaySelected,
-    viewEvent,
-    setViewEvent,
+    // viewEvent,
+    // setViewEvent,
+    modalDispatch,
   } = useContext(GlobalContext);
   const CURRENT_DATE = dayjs(
     new Date(currYearIndex, currMonthIndex, currDayIndex)
   );
+
+  const handleViewEvent=()=>{
+    setViewEvent(null);
+  }
 
   useEffect(() => {
     const currDate = CURRENT_DATE;
@@ -46,10 +53,11 @@ const DayView = () => {
       .format("YYYY-MM-DDTHH:mm");
     const timeStamp = { startTime, endTime };
     setDaySelected(timeStamp);
-    setShowModal(true);
+    modalDispatch({type:actions.OPEN_ADD_EVENT});
   };
 
   return (
+    <>
     <div className="day-view-parent">
       <div className="day-view-header">
         <DayNavigator />
@@ -87,6 +95,9 @@ const DayView = () => {
         </div>
       </div>
     </div>
+
+    {viewEvent!=null && <ViewEvent viewEvent={viewEvent} handleViewEvent={handleViewEvent}/>}
+    </>
   );
 };
 

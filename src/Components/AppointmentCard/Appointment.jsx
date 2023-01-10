@@ -11,7 +11,7 @@ const Appointment = ({ event }) => {
   let fontWeight = "";
   const startTime = dayjs(appointmentStartTime).hour() * 60;
   const startTimeMinutes = dayjs(appointmentStartTime).minute();
-  const endTime = dayjs(appointmentEndTime).hour() * 60;
+  const endTime = dayjs(appointmentEndTime).format("HH")=="00"?24*60:dayjs(appointmentEndTime).hour() * 60;
   const endTimeMinutes = dayjs(appointmentEndTime).minute();
   const hourDuration = endTime - startTime;
   const minutesDuration = endTimeMinutes - startTimeMinutes;

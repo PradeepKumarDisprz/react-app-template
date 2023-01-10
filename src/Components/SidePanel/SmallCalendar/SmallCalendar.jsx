@@ -62,11 +62,11 @@ const SmallCalendar = () => {
         setCurrYearIndex(day.year());
       }
       setCurrDayIndex(day.date());
-      // if(currWeekIndex!=day.week()-1)
-      // {
-      //   setCurrWeekIndex(day.week()-1-day.month()*4);
-      //   console.log(day.week())
-      // }
+      if(currWeekIndex!=day.week()-1)
+      {
+        setCurrWeekIndex(day.week()-1-day.month()*4);
+        console.log(day.week())
+      }
       if (day === daySelected) {
         setDaySelected("");
       } else {

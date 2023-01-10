@@ -7,7 +7,6 @@ import Modal from "../../Modal";
 
 
 const Calendar = () => {
-  const [showModal,setShowModal]=useState(false);
   return (
     <>
     <Modal/>

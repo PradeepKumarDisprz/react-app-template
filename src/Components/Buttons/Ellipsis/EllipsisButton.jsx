@@ -1,35 +1,30 @@
 import React, { useCallback, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
-import { useState, useRef,useEffect} from "react";
 import "./EllipsisButton.scss";
 import GlobalContext from "../../../Context/GlobalContext";
+import { actions } from "../../../Reducer/ModalReducer";
+import { apiActions } from "../../../Reducer/TriggerApiReducer";
 
-function EllipsisButton({meet,isOpen,setIsOpen}) {
-  const {setDeleteEvent,viewEvent,setViewEvent,setUpdateEvent,setShowModal}=useContext(GlobalContext);
+function EllipsisButton({meet,isOpen,setIsOpen,handleViewEvent}) {
+  const {apiDispatch,modalDispatch}=useContext(GlobalContext);
   const handleDelete=()=>
   {
-    // const meeting=meet!=null?meet:""
-
-    setDeleteEvent(meet!=null&&meet.appointmentId)
-    setViewEvent(null);
+    apiDispatch({type:apiActions.DELETE_EVENT,payload:meet.appointmentId})
     setIsOpen(!isOpen)
+    handleViewEvent();
   }
 
   const handleEdit=()=>
   {
-    setUpdateEvent(meet!=null&&meet)
-    setViewEvent(null);
-    setIsOpen(!isOpen)
-    setShowModal(true);
+    handleViewEvent();
+    setIsOpen(!isOpen);
+    modalDispatch({type:actions.OPEN_UPDATE_EVENT,payload:meet});
   }
 
 
-
-
-
   return (
-    <div >
+    <>
     <span onClick={()=>setIsOpen(!isOpen)} className="ellipsis-icon"><FontAwesomeIcon icon={faEllipsis}  /></span>
     {isOpen&&
     <div className="ellipsis-overlay">
@@ -42,7 +37,7 @@ function EllipsisButton({meet,isOpen,setIsOpen}) {
       </button>
     </div>
     </div>}
-    </div>
+    </>
   );
 }
 
