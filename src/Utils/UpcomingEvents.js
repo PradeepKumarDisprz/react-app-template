@@ -8,7 +8,7 @@ const GetUpcomingEvents = () => {
     const currDate=dayjs();
     currDateAppointments.map((event)=>
     {
-        if(dayjs(event.appointmentStartTime)>=currDate)
+        if(dayjs(event.appointmentStartTime)>=currDate||event.appointmentEndTime<=currDate)
         {
             separatedEvents.push(event);
         }
