@@ -7,28 +7,28 @@ import DayNavigator from "../DayNavigator/DayNavigator";
 import Appointment from "../../AppointmentCard/Appointment";
 import { actions } from "../../../Reducer/ModalReducer";
 import ViewEvent from "../../Modal/ViewEventModal/ViewEvent";
+import GetCurrTimeStyle from "../../../Utils/CurrTimeStyle";
 
 const DayView = () => {
-  const [viewEvent,setViewEvent]=useState(null);
+  const currTimeStyle=GetCurrTimeStyle();
+  const [viewEvent, setViewEvent] = useState(null);
+  const today=dayjs();
   const arrayOfTime = GetHour();
   const {
     currDayIndex,
     currMonthIndex,
     currYearIndex,
     currDateAppointments,
-    daySelected,
     setDaySelected,
-    // viewEvent,
-    // setViewEvent,
     modalDispatch,
   } = useContext(GlobalContext);
   const CURRENT_DATE = dayjs(
     new Date(currYearIndex, currMonthIndex, currDayIndex)
   );
 
-  const handleViewEvent=()=>{
+  const handleViewEvent = () => {
     setViewEvent(null);
-  }
+  };
 
   useEffect(() => {
     const currDate = CURRENT_DATE;
@@ -53,53 +53,59 @@ const DayView = () => {
       .format("YYYY-MM-DDTHH:mm");
     const timeStamp = { startTime, endTime };
     setDaySelected(timeStamp);
-    modalDispatch({type:actions.OPEN_ADD_EVENT});
+    modalDispatch({ type: actions.OPEN_ADD_EVENT });
   };
 
   return (
     <>
-    <div className="day-view-parent">
-      <div className="day-view-header">
-        <DayNavigator />
-      </div>
-
-      <div className="time-view">
-        <div>
-          {arrayOfTime.map((hour, index) => (
-            <div className="time-container" key={index}>
-              <div className="time-stamp">{hour.format("HH:mm")}</div>
-              <div className="dotted-lines"></div>
-              <div className="dotted-lines"></div>
-              <div className="dotted-lines"></div>
-            </div>
-          ))}
+      <div className="day-view-parent">
+        <div className="day-view-header">
+          <DayNavigator />
         </div>
 
-        <div className="timeline-container">
-          {arrayOfTime.map((hour, index) => (
-            <div className="timeline" key={index} onClick={() => handleCreateModal(hour)}></div>
-          ))}
+        <div className="time-view">
           <div>
-          {
-          currDateAppointments?.map((event,index)=>
-          (
-            <div key={index} onClick={()=>{
-              setViewEvent(event)
-            }}>
-               <Appointment event={event}/>
-            </div>             
-          )     
-         )} 
+            {arrayOfTime.map((hour, index) => (
+              <div className="time-container" key={index}>
+                <div className="time-stamp">{hour.format("HH:mm")}</div>
+                <div className="dotted-lines"></div>
+                <div className="dotted-lines"></div>
+                <div className="dotted-lines"></div>
+              </div>
+            ))}
           </div>
-         
+
+          <div className="timeline-container">
+            {today.date()===CURRENT_DATE.date()&&<div className="curr-time" style={currTimeStyle}></div>}
+            {arrayOfTime.map((hour, index) => (
+              <div
+                className="timeline"
+                key={index}
+                onClick={() => handleCreateModal(hour)}
+              ></div>
+            ))}
+            <div>
+              {currDateAppointments?.map((event, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setViewEvent(event);
+                  }}
+                >
+                  <Appointment event={event} />
+                </div>
+              ))}
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
 
-    {viewEvent!=null && <ViewEvent viewEvent={viewEvent} handleViewEvent={handleViewEvent}/>}
+      {viewEvent != null && (
+        <ViewEvent viewEvent={viewEvent} handleViewEvent={handleViewEvent} />
+      )}
     </>
   );
 };
 
 export default DayView;
-

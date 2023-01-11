@@ -11,7 +11,10 @@ const Appointment = ({ event }) => {
   let fontWeight = "";
   const startTime = dayjs(appointmentStartTime).hour() * 60;
   const startTimeMinutes = dayjs(appointmentStartTime).minute();
-  const endTime = dayjs(appointmentEndTime).format("HH")=="00"?24*60:dayjs(appointmentEndTime).hour() * 60;
+  const endTime =
+    dayjs(appointmentEndTime).format("HH") == "00"
+      ? 24 * 60
+      : dayjs(appointmentEndTime).hour() * 60;
   const endTimeMinutes = dayjs(appointmentEndTime).minute();
   const hourDuration = endTime - startTime;
   const minutesDuration = endTimeMinutes - startTimeMinutes;
@@ -30,14 +33,14 @@ const Appointment = ({ event }) => {
     // if (TotalDuration <= 10) {
     //   heightValue = 10;
     //   fontValue = 5;
-    // } 
+    // }
     // else if (TotalDuration <= 20) {
     //   heightValue = (TotalDuration / 60) * 78;
     //   fontValue = 8;
-    // } 
-    else 
-    {
-      fontValue = 10;
+    // }
+    else {
+      fontValue = 14;
+      fontWeight = 600;
       // paddingTop = 5;
       heightValue = (TotalDuration / 60) * 78;
     }
@@ -48,12 +51,11 @@ const Appointment = ({ event }) => {
     top: (startTime / 60) * HEIGHT + (startTimeMinutes / 60) * HEIGHT,
     height: heightValue,
     fontSize: fontValue,
-    fontWeight: fontWeight
+    fontWeight: fontWeight,
   };
 
   const appointmentContentStyle = {
     paddingTop: paddingTop,
-
   };
 
   return (

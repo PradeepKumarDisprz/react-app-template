@@ -33,6 +33,8 @@
       flex-direction: $flex-direction;
       align-items: $align-item;
 
+
+
       // .time-stamp
       // {
       //   padding: 2px 5px;
@@ -55,6 +57,29 @@
       margin-right: 10px;
       width: 100%;
 
+      .curr-time
+      {
+        top: 86%;
+        position: absolute;
+        border-top:2px solid $font-style-color;
+        width: 100%;
+        z-index:6;
+
+        &::before{
+          content: "";
+          background-color: $font-style-color;
+          width: 12px;
+          height: 12px;
+          border-radius: 50px;
+          position: absolute;
+          left: 0px;
+          top:0px;
+          margin-left: -6px;
+        margin-top:-7px;
+
+        }
+      }
+
       .timeline {
         height: 80px;
         border-top: 1px solid $border-color;
@@ -62,3 +87,5 @@
     }
   }
 }
+
+

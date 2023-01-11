@@ -40,7 +40,7 @@ const GlobalContextWrapper = (props) => {
         }
       );
       setCurrDateAppointments(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }

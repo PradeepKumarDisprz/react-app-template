@@ -41,11 +41,11 @@ const NavBar = () => {
             <img src={EventLogo} alt="calendar" className="nav-logo" />
             <span className="nav-title">Calendar</span>
           </div>
-          <div className="nav-day">
+          {/* <div className="nav-day">
             <button title="current-day">
               {dayjs(new Date(currYearIndex, currMonthIndex, currDayIndex)).format("MMMM DD, YYYY")}
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="nav-end">

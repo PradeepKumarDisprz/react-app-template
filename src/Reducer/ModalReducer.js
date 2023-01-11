@@ -52,7 +52,7 @@ export const actions = {
 };
 
 export const modalReducer = (state = initialState, action) => {
-    console.log(action.type);
+    // console.log(action.type);
     switch (action.type) {
         case actions.OPEN_ADD_EVENT:
             return { showModal: true };
