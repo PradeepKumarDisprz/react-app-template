@@ -21,6 +21,7 @@ const DayView = () => {
     currDateAppointments,
     setDaySelected,
     modalDispatch,
+    modalState
   } = useContext(GlobalContext);
   const CURRENT_DATE = dayjs(
     new Date(currYearIndex, currMonthIndex, currDayIndex)
@@ -89,7 +90,8 @@ const DayView = () => {
                 <div
                   key={index}
                   onClick={() => {
-                    setViewEvent(event);
+                    modalDispatch({type:actions.SET_VIEW_EVENT,payload:event})
+                    // setViewEvent(event);
                   }}
                 >
                   <Appointment event={event} />
@@ -100,10 +102,6 @@ const DayView = () => {
           </div>
         </div>
       </div>
-
-      {viewEvent != null && (
-        <ViewEvent viewEvent={viewEvent} handleViewEvent={handleViewEvent} />
-      )}
     </>
   );
 };

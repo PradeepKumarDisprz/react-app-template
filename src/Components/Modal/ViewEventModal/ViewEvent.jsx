@@ -2,30 +2,32 @@ import { useContext, useState } from "react";
 import React from "react";
 import EllipsisButton from "../../Buttons/Ellipsis/EllipsisButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark,faFileLines,faStar,faClock} from "@fortawesome/free-solid-svg-icons";
+import { faXmark,faFileLines,faStar,faClock,faTrash,faPen} from "@fortawesome/free-solid-svg-icons";
 import { CloseButton } from "../../Buttons/Buttons";
 import "./ViewEvent.scss";
 import GlobalContext from "../../../Context/GlobalContext";
 import dayjs from "dayjs";
-import { createPortal } from "react-dom";
+import { actions } from "../../../Reducer/ModalReducer";
 
-const ViewEvent = ({viewEvent,handleViewEvent}) => {
+const ViewEvent = () => {
+  const {modalState,modalDispatch}=useContext(GlobalContext);
 
   const [isOpen, setIsOpen] = useState(false);
-  return createPortal(
+  return (
     <>
-      {(
-        <div className="view-pop-up-overlay" onClick={() => handleViewEvent()}>
+      {modalState.viewEvent != null &&(
+        <div className="view-pop-up-overlay" onClick={() => modalDispatch({type:actions.RESET_VIEW_EVENT})}>
           <div className="view-pop-up-box" onClick={(e) => {e.stopPropagation()
           isOpen&&setIsOpen(false);
            }}>
             <div className="view-event-header">
               <span className="view-header-ellipsis">
-                <EllipsisButton isOpen={isOpen} setIsOpen={setIsOpen} meet={viewEvent} handleViewEvent={handleViewEvent}/>
+                <EllipsisButton isOpen={isOpen} setIsOpen={setIsOpen} meet={modalState.viewEvent}/>
               </span>
               <FontAwesomeIcon
                 icon={faXmark}
-                onClick={() => handleViewEvent()}
+                size={"lg"}
+                onClick={() => modalDispatch({type:actions.RESET_VIEW_EVENT})}
                 className=" view-header-btn"
               />
             </div>
@@ -39,7 +41,7 @@ const ViewEvent = ({viewEvent,handleViewEvent}) => {
                     className="view-content-icon"
                   />
                   <div className="view-event-text">
-                    {viewEvent != null && viewEvent.appointmentTitle}
+                    {modalState.viewEvent != null && modalState.viewEvent.appointmentTitle}
                   </div>
                 </div>
 
@@ -49,21 +51,21 @@ const ViewEvent = ({viewEvent,handleViewEvent}) => {
                     className="view-content-icon"
                   />
                   <div className="view-event-text">
-                    {viewEvent != null && (
+                    {
                       <div className="time">
                         <span className="txt">Date</span>{" "}
-                        {dayjs(viewEvent.appointmentStartTime)
+                        {dayjs(modalState.viewEvent.appointmentStartTime)
                           .format("DD-MM-YYYY")}
                       </div>
-                    )}
-                    {viewEvent != null && (
+                    }
+                    {
                       <div>
                         <span className="txt">Time</span>
-                        {dayjs(viewEvent.appointmentStartTime)
-                          .format(" HH:mm a")+" - "+dayjs(viewEvent.appointmentEndTime)
+                        {dayjs(modalState.viewEvent.appointmentStartTime)
+                          .format(" HH:mm a")+" - "+dayjs(modalState.viewEvent.appointmentEndTime)
                           .format(" HH:mm a")}
                       </div>
-                    )}
+                    }
                   </div>
                 </div>
 
@@ -73,22 +75,21 @@ const ViewEvent = ({viewEvent,handleViewEvent}) => {
                     className="view-content-icon"
                   />
                   <div className="view-event-text description">
-                    {viewEvent != null&&viewEvent.appointmentDescription?viewEvent.appointmentDescription: "No Description Added"}
+                    {modalState.viewEvent != null&&modalState.viewEvent.appointmentDescription?modalState.viewEvent.appointmentDescription: "No Description Added"}
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="view-event-popup-btns">
-              <span onClick={() => handleViewEvent()}>
+              <span onClick={() => modalDispatch({type:actions.RESET_VIEW_EVENT})}>
                 <CloseButton />
               </span>
             </div>
           </div>
         </div>
       )}
-    </>,
-    document.getElementById("modal")
+    </>
   );
 };
 

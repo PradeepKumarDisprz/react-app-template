@@ -5,17 +5,22 @@ import "./UpcomingEvent.scss";
 import GetUpcomingEvents from "../../../Utils/UpcomingEvents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown,faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { actions } from "../../../Reducer/ModalReducer";
 
 const UpcomingEvents = () => {
-  const upcomingEvents = GetUpcomingEvents();
+  const {modalDispatch}=useContext(GlobalContext);
+  const [upcomingEvents,setUpcomingEve]=useState(GetUpcomingEvents());
+  // const upcomingEvents = GetUpcomingEvents();
   const [viewAll, setViewAll] = useState(false);
-//   useEffect(()=>{
-//    const upcomingEvents= setTimeout(()=>GetUpcomingEvents(),2000);
-//    return function cleanup()
-//    {
-//     clearInterval(upcomingEvents)
-//    }
-//   })
+//  useEffect(() => {
+//   const interval = setInterval(() => {
+//     setUpcomingEve(GetUpcomingEvents())
+//   }, 1000);
+//   return () => clearInterval(interval);
+// }, []);
+  //  setInterval(()=>
+  //  setUpcomingEve(GetUpcomingEvents()),1000);
+
 
 
   return (
@@ -37,9 +42,9 @@ const UpcomingEvents = () => {
       <div className="upcoming-events">
         {viewAll?
         upcomingEvents.map((event, index) => {
-          return <AppointmentDetails key={index} event={event} />;
+          return <div  onClick={()=>modalDispatch({type:actions.SET_VIEW_EVENT,payload:event})} ><AppointmentDetails key={index} event={event}/></div>;
         }):upcomingEvents.slice(0,3).map((event, index) => {
-            return <AppointmentDetails key={index} event={event} />;
+            return  <div  onClick={()=>modalDispatch({type:actions.SET_VIEW_EVENT,payload:event})}><AppointmentDetails key={index} event={event} /></div>;
           })
           }
       </div>

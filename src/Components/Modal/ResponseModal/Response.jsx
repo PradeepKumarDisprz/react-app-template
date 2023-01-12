@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Response.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCheck,faExclamation} from "@fortawesome/free-solid-svg-icons";
@@ -9,6 +9,17 @@ import { requestActions } from "../../../Reducer/RequestReducer";
 function Response() {
 
   const {requestState,requestDispatch} =useContext(GlobalContext);
+
+  useEffect(()=>
+  {
+    if(requestState.showRequestSuccess)
+    {
+      setTimeout(()=>
+      {
+        requestDispatch({type:requestActions.REMOVE_ERROR_RESPONSE});
+      },2000)
+    }
+  },[requestState.showRequestSuccess])
 
   return (
     <>     

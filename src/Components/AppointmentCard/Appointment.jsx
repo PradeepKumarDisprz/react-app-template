@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 
 const Appointment = ({ event }) => {
   const { appointmentEndTime, appointmentStartTime, appointmentTitle } = event;
-  const HEIGHT = 81.2;
+  const HEIGHT = 80.9;
   let fontValue = 12;
   let heightValue = 0;
   let paddingTop = 0;
