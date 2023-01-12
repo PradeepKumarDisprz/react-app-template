@@ -22,13 +22,33 @@ const CreateEvent = () => {
     setEndTime(daySelected.endTime)
     settitle("");
     setDescription("");
-  },[daySelected])
+    if(modalState.updateEvent!=null)
+    {
+      settitle(modalState.updateEvent.appointmentTitle);
+      setDescription(modalState.updateEvent.appointmentDescription);
+      setStartTime(modalState.updateEvent.appointmentStartTime);
+      setEndTime(modalState.updateEvent.appointmentEndTime);
+    }
+  },[daySelected,modalState.updateEvent])
 
   const handleSubmit=(e)=>
   {
     e.preventDefault();
     if(title.replace(/\s/g,"")!=="")
     {
+      if(modalState.updateEvent!=null)
+      {
+        const eventSubmitted={
+          appointmentTitle:title,
+          appointmentDescription:description,
+          appointmentStartTime:startTime,
+          appointmentEndTime:endTime
+        }
+        const event={appointmentId:modalState.updateEvent.appointmentId,eventSubmitted};
+        apiDispatch({type:apiActions.UPDATE_EVENT,payload:event});
+      }
+
+      else{
       const titleSpaces=title.replace(/\s/g, " ")
       const eventSubmitted={
         appointmentTitle:titleSpaces,
@@ -36,11 +56,12 @@ const CreateEvent = () => {
         appointmentStartTime: startTime,
         appointmentEndTime:endTime
       } 
-    apiDispatch({type:apiActions.POST_EVENT,payload:eventSubmitted});
+      apiDispatch({type:apiActions.POST_EVENT,payload:eventSubmitted});
+    }
     }
   }
 
-  return createPortal(
+  return (
     <>
       {
       modalState.showModal&& 
@@ -72,8 +93,7 @@ const CreateEvent = () => {
           </form>
         </div>
       )}
-    </>,
-    document.getElementById("modal")
+    </>
   );
 };
 

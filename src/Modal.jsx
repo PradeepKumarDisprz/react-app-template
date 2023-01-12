@@ -10,7 +10,7 @@ const Modal = () => {
   return  createPortal(
     <>
       <CreateEvent />
-      <UpdateEvent />
+      {/* <UpdateEvent /> */}
       <Response/>
       <RequestLoader/>
       <ViewEvent/>

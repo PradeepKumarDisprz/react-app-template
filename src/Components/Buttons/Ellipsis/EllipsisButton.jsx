@@ -12,6 +12,7 @@ function EllipsisButton({meet,isOpen,setIsOpen}) {
   {
     apiDispatch({type:apiActions.DELETE_EVENT,payload:meet.appointmentId})
     modalDispatch({type:actions.RESET_VIEW_EVENT})
+    modalDispatch({type:actions.OPEN_ADD_EVENT})
     setIsOpen(!isOpen)
     
   }
@@ -21,6 +22,7 @@ function EllipsisButton({meet,isOpen,setIsOpen}) {
     // handleViewEvent();
     setIsOpen(!isOpen);
     modalDispatch({type:actions.RESET_VIEW_EVENT})
+    modalDispatch({type:actions.OPEN_ADD_EVENT})
     modalDispatch({type:actions.OPEN_UPDATE_EVENT,payload:meet});
     
   }

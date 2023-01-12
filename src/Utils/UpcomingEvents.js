@@ -1,9 +1,6 @@
 import dayjs from "dayjs";
-import { useContext } from "react";
-import GlobalContext from "../Context/GlobalContext";
 
-const GetUpcomingEvents = () => {
-    const {currDateAppointments}=useContext(GlobalContext)
+const GetUpcomingEvents = (currDateAppointments) => {
     const separatedEvents=[];
     const currDate=dayjs();
     currDateAppointments.map((event)=>
