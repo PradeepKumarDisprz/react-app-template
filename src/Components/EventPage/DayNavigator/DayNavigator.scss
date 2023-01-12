@@ -42,6 +42,13 @@
       font-size: 18px;
       font-weight: bold;
     }
+    &:hover
+    {
+      box-shadow: 1px 1px 5px $border-color;
+      border-radius: 10px;
+      background-color: $background-color;
+      color:$font-style-color;
+    }
 
   }
 

@@ -64,7 +64,7 @@ const CreateEvent = () => {
   return (
     <>
       {
-      modalState.showModal&& 
+     (modalState.updateEvent!=null|| modalState.showModal)&& 
       (
         <div className="create-pop-up-overlay" >
           <form className="create-pop-up-box"  onSubmit={handleSubmit} >

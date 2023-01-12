@@ -39,7 +39,9 @@ const DayNavigator = () => {
     if (rowIndex - 1 < 0) {
       setCurrMonthIndex(currMonthIndex - 1);
       setCurrWeekIndex(4);
+      setCurrDayIndex(daysOfCurrMonth[4][0].date())
     } else {
+      setCurrDayIndex(daysOfCurrMonth[rowIndex-1][0].date())
       setRowIndex(rowIndex - 1);
       setCurrWeekIndex(rowIndex - 1);
     }
@@ -50,6 +52,7 @@ const DayNavigator = () => {
       setCurrMonthIndex(currMonthIndex + 1);
       setCurrWeekIndex(0);
     } else {
+      setCurrDayIndex(daysOfCurrMonth[rowIndex+1][0].date())
       setRowIndex(rowIndex + 1);
       setCurrWeekIndex(rowIndex + 1);
     }

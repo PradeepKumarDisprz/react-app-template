@@ -63,6 +63,7 @@ export const modalReducer = (state = initialState, action) => {
             return { showModal: false };
 
         case actions.OPEN_UPDATE_EVENT:
+            console.log(action.payload)
             return { updateEvent: action.payload };
         case actions.CLOSE_UPDATE_EVENT:
             return { updateEvent: null };

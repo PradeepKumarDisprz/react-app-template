@@ -2,37 +2,29 @@
 @import "../../ReUsableStyles/_variable.scss";
 
 .resp-pop-up-overlay {
-  // @include overlay;
-  justify-content: center;
-  padding-top: 20px;
-  padding-right: 20px;
-  background: transparent;
-  align-items: flex-end;
-
   .resp-pop-up-box {
+    top: 94%;
+    left: 40%;
+    position: $position-fixed;
     border-radius: 8px;
     width: 16%;
     margin-bottom: 25px;
-    display: flex;
+    display: $display-property;
     cursor: default;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: $space-between;
+    align-items: $align-item;
     background: #000000;
-    box-shadow:1px 1px 5px #a3a3a3;
-
+    box-shadow: 1px 1px 5px #a3a3a3;
   }
 
-
-
-  .resp-check
-{
-  padding: 15px;
-  background-color: #000000;
-  color:rgb(255, 255, 255);
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
+  .resp-check {
+    padding: 15px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
   .resp-faXmark {
     @include popupHeaderIcons;
     color: #fff;
@@ -46,20 +38,16 @@
   }
 }
 
-
-
-
 .error-pop-up-overlay {
   @include overlay;
   // align-items: flex-start;
   // padding-top: 20px;
- 
 
   .error-pop-up-box {
     @include popupBox;
     width: 22%;
   }
-  
+
   .error-header {
     @include popupHeader;
   }
@@ -68,40 +56,35 @@
     @include popupHeaderIcons;
   }
 
-  .error-content
-  {
+  .error-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: default;
 
-    .error-content-name
-    {
+    .error-content-name {
       font-size: 18px;
       font-weight: bold;
       color: $font-style-color;
     }
 
-    .error-symbol
-    {
+    .error-symbol {
       padding-left: 5px;
       font-size: 20px;
     }
 
-    .error-code
-    {
+    .error-code {
       padding-top: 20px;
       color: #dd4040;
     }
-  .error-message{
-    padding-top: 10px;
-    font-size: 15px;
-    width: 80%;
-    padding-top: 20px;
-    padding-bottom: 30px;    
-    text-align: center;
-    color: #868585;
+    .error-message {
+      padding-top: 10px;
+      font-size: 15px;
+      width: 80%;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      text-align: center;
+      color: #868585;
+    }
   }
-}
-
 }

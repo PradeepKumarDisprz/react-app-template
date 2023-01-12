@@ -10,27 +10,22 @@ import { actions } from "../../../Reducer/ModalReducer";
 
 const UpcomingEvents = () => {
   const { modalDispatch, currDateAppointments } = useContext(GlobalContext);
-  const [upcomingEvents, setUpcomingEve] = useState(GetUpcomingEvents(currDateAppointments));
+  // const [upcomingEvents, setUpcomingEve] = useState(GetUpcomingEvents(currDateAppointments));
+  const upcomingEvents=GetUpcomingEvents(currDateAppointments);
   const [viewAll, setViewAll] = useState(false);
 
-  // const MINUTE_MS = 1000;
-
+  // console.log(currDateAppointments,"first")
+  // const MINUTE_MS =60000;
   // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setUpcomingEve(GetUpcomingEvents(currDateAppointments));
-  //     console.log(upcomingEvents);
-  //   }, MINUTE_MS);
-  //   return () => clearInterval(interval);
-  // }, []);
+  //   // console.log(currDateAppointments,"hi")
 
-  //  useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setUpcomingEve(GetUpcomingEvents())
-  //   }, 1000);
-  //   return () => clearInterval(interval);
-  // }, []);
-  //  setInterval(()=>
-  //  setUpcomingEve(GetUpcomingEvents()),1000);
+  //     const interval = setInterval(() => {
+  //       setUpcomingEve(GetUpcomingEvents(currDateAppointments));
+  //       console.log(currDateAppointments); 
+  //     }, MINUTE_MS);
+  //     return () => clearInterval(interval);
+   
+  // }, [currDateAppointments]);
 
   return (
     <>
@@ -56,7 +51,7 @@ const UpcomingEvents = () => {
         {viewAll
           ? upcomingEvents.map((event, index) => {
               return (
-                <div
+                <div key={index} 
                   onClick={() =>
                     modalDispatch({
                       type: actions.SET_VIEW_EVENT,
@@ -64,13 +59,13 @@ const UpcomingEvents = () => {
                     })
                   }
                 >
-                  <AppointmentDetails key={index} event={event} />
+                  <AppointmentDetails event={event} />
                 </div>
               );
             })
           : upcomingEvents.slice(0, 3).map((event, index) => {
               return (
-                <div
+                <div key={index}
                   onClick={() =>
                     modalDispatch({
                       type: actions.SET_VIEW_EVENT,
@@ -78,7 +73,7 @@ const UpcomingEvents = () => {
                     })
                   }
                 >
-                  <AppointmentDetails key={index} event={event} />
+                  <AppointmentDetails event={event} />
                 </div>
               );
             })}
