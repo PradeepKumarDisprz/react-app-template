@@ -17,7 +17,7 @@ function Response() {
       setTimeout(()=>
       {
         requestDispatch({type:requestActions.REMOVE_ERROR_RESPONSE});
-      },2000)
+      },1000)
     }
   },[requestState.showRequestSuccess])
 

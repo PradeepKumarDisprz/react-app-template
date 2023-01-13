@@ -8,6 +8,7 @@ import { apiActions } from "../../../Reducer/TriggerApiReducer";
 
 function EllipsisButton({meet,isOpen,setIsOpen}) {
   const {apiDispatch,modalDispatch}=useContext(GlobalContext);
+  
   const handleDelete=()=>
   {
     apiDispatch({type:apiActions.DELETE_EVENT,payload:meet.appointmentId})
@@ -25,6 +26,17 @@ function EllipsisButton({meet,isOpen,setIsOpen}) {
     modalDispatch({type:actions.OPEN_UPDATE_EVENT,payload:meet});
     
   }
+
+    
+  // const handleDeleteConfirmation=()=>
+  // {
+  //   apiDispatch({type:apiActions.DELETE_EVENT,payload:meet.appointmentId})
+  //   modalDispatch({type:actions.RESET_VIEW_EVENT})
+  //   setIsOpen(!isOpen)
+    
+  // }
+
+
 
 
   return (

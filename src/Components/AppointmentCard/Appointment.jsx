@@ -59,7 +59,7 @@ const Appointment = ({ event }) => {
   };
 
   return (
-    <div className="appointmentContent" style={appointmentCardStyle}>
+    <div className={`appointment-content ${appointmentCardStyle.height<30&&"card-hover-style"}`} style={appointmentCardStyle}>
       <div className="appointment-timestamp" style={appointmentContentStyle}>
         {event &&
           dayjs(appointmentStartTime).format("HH:mm") +
