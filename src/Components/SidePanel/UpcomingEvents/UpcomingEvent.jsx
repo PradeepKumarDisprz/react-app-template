@@ -10,25 +10,30 @@ import { actions } from "../../../Reducer/ModalReducer";
 
 const UpcomingEvents = () => {
   const { modalDispatch, currDateAppointments } = useContext(GlobalContext);
-  // const [upcomingEvents, setUpcomingEve] = useState(GetUpcomingEvents(currDateAppointments));
-  const upcomingEvents=GetUpcomingEvents(currDateAppointments);
+   var upcomingEvents=GetUpcomingEvents(currDateAppointments);
+  // const [upcomingEvents, setUpcomingEve] = useState([]);
   const [viewAll, setViewAll] = useState(false);
 
-  // console.log(currDateAppointments,"first")
-  // const MINUTE_MS =60000;
+  // console.log(upcomingEvents,"first")
+  // const MINUTE_MS =1000;
   // useEffect(() => {
-  //   // console.log(currDateAppointments,"hi")
+  //   // if(upcomingEvents.length==0)
+  //   // {
+  //   //   setUpcomingEve(GetUpcomingEvents(currDateAppointments))
+  //   // }
 
-  //     const interval = setInterval(() => {
-  //       setUpcomingEve(GetUpcomingEvents(currDateAppointments));
-  //       console.log(currDateAppointments); 
+  //   const interval = setInterval(() => {
+  //     upcomingEvents=(GetUpcomingEvents(currDateAppointments));
+  //       console.log((GetUpcomingEvents(currDateAppointments))); 
   //     }, MINUTE_MS);
   //     return () => clearInterval(interval);
-   
-  // }, [currDateAppointments]);
+ 
+
+  // }, [currDateAppointments.length>0]);
 
   return (
     <>
+    
       <div className="upcoming-event-container">
         <div className="upcoming-header">
           <div className="header-name">

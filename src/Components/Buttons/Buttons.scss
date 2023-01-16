@@ -92,3 +92,34 @@
     @include buttonHover;
   }
 }
+
+.delete-btn
+{
+  @include buttonStyle;
+  padding: 10px 20px;
+
+  &:hover {
+    @include buttonHover;
+  }
+}
+
+.next-btn{
+  @include buttonStyle;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: $background-color;
+
+  &:hover {
+    @include buttonHover;
+    background-color: #000000;
+  }
+}
+
+.previous-btn{
+  @include buttonStyle;
+  padding: 10px 20px;
+
+  &:hover {
+    @include buttonHover;
+  }
+}

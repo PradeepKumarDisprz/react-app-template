@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../../Context/GlobalContext";
 import GetHour from "../../../Utils/Hour";
 import "./DayView.scss";
-import DayNavigator from "../DayNavigator/DayNavigator";
 import Appointment from "../../AppointmentCard/Appointment";
 import { actions } from "../../../Reducer/ModalReducer";
 import ViewEvent from "../../Modal/ViewEventModal/ViewEvent";
@@ -11,37 +10,30 @@ import GetCurrTimeStyle from "../../../Utils/CurrTimeStyle";
 
 const DayView = () => {
   const currTimeStyle=GetCurrTimeStyle();
-  const [viewEvent, setViewEvent] = useState(null);
   const today=dayjs();
   const arrayOfTime = GetHour();
   const {
-    currDayIndex,
-    currMonthIndex,
-    currYearIndex,
     currDateAppointments,
-    setDaySelected,
+    setTimeStamp,
     modalDispatch,
-    modalState
+    calendarState,
   } = useContext(GlobalContext);
   const CURRENT_DATE = dayjs(
-    new Date(currYearIndex, currMonthIndex, currDayIndex)
+    new Date(calendarState.currYearIndex, calendarState.currMonthIndex, calendarState.currDayIndex)
   );
 
-  const handleViewEvent = () => {
-    setViewEvent(null);
-  };
 
   useEffect(() => {
     const currDate = CURRENT_DATE;
     const currenthour = dayjs();
     const endTime = currDate
       .add(currenthour.hour() + 1, "hours")
-      .format("YYYY-MM-DDThh:mm");
+      .format("YYYY-MM-DDTHH:mm");
     const startTime = currDate
       .add(currenthour.hour(), "hours")
-      .format("YYYY-MM-DDThh:mm");
+      .format("YYYY-MM-DDTHH:mm");
     const timeStamp = { startTime, endTime };
-    setDaySelected(timeStamp);
+    setTimeStamp(timeStamp);
   }, [CURRENT_DATE.date()]);
 
   const handleCreateModal = (hour) => {
@@ -53,7 +45,7 @@ const DayView = () => {
       .add(hour.hour(), "hours")
       .format("YYYY-MM-DDTHH:mm");
     const timeStamp = { startTime, endTime };
-    setDaySelected(timeStamp);
+    setTimeStamp(timeStamp);
     modalDispatch({ type: actions.OPEN_ADD_EVENT });
   };
 
@@ -61,7 +53,7 @@ const DayView = () => {
     <>
       <div className="day-view-parent">
         <div className="day-view-header">
-          <DayNavigator />
+          {dayjs(new Date(calendarState.currYearIndex,calendarState.currMonthIndex,calendarState.currDayIndex)).format("DD MMM, YYYY")}
         </div>
 
         <div className="time-view">
@@ -91,7 +83,6 @@ const DayView = () => {
                   key={index}
                   onClick={() => {
                     modalDispatch({type:actions.SET_VIEW_EVENT,payload:event})
-                    // setViewEvent(event);
                   }}
                 >
                   <Appointment event={event} />

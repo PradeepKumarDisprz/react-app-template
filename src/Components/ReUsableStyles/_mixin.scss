@@ -49,9 +49,10 @@
 
 //button style
 @mixin buttonStyle {
-    background-image: $linear-gradient;
+    // background-image: $linear-gradient;
     color:$font-style-color;
     cursor: $cursor-pointer;
+    background-color: $background-color;
     border: none;
     font-size: 14px;
     box-shadow: 1px 1px 5px #7b7a7a;
@@ -60,7 +61,7 @@
 
 @mixin buttonHover
 {
-    background-image: none;
+    // background-image: none;
     color: $background-color;
     background-color:$hover-color;
 }

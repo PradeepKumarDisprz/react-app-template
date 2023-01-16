@@ -41,7 +41,6 @@ const Appointment = ({ event }) => {
     else {
       fontValue = 14;
       fontWeight = 600;
-      // paddingTop = 5;
       heightValue = (TotalDuration / 60) * 78;
     }
   }

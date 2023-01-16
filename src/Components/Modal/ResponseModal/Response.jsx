@@ -3,33 +3,34 @@ import "./Response.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCheck,faExclamation} from "@fortawesome/free-solid-svg-icons";
 import GlobalContext from "../../../Context/GlobalContext";
-import { requestActions } from "../../../Reducer/RequestReducer";
+// import { requestActions } from "../../../Reducer/RequestReducer";
+import { actions } from "../../../Reducer/ModalReducer";
 
 
 function Response() {
 
-  const {requestState,requestDispatch} =useContext(GlobalContext);
+  const {requestState,requestDispatch,modalState,modalDispatch} =useContext(GlobalContext);
 
   useEffect(()=>
   {
-    if(requestState.showRequestSuccess)
+    if(modalState.showRequestSuccess)
     {
       setTimeout(()=>
       {
-        requestDispatch({type:requestActions.REMOVE_ERROR_RESPONSE});
+        modalDispatch({type:actions.CLOSE_REQUEST_SUCCESS});
       },1000)
     }
-  },[requestState.showRequestSuccess])
+  },[modalState.showRequestSuccess])
 
   return (
     <>     
-      { requestState.errorResponse!=null&& (
-          <div className="error-pop-up-overlay" onClick={() => {requestDispatch({type:requestActions.REMOVE_ERROR_RESPONSE});}}>
+      { modalState.errorResponse!=null&& (
+          <div className="error-pop-up-overlay" onClick={() => {modalDispatch({type:actions.REMOVE_ERROR_RESPONSE});}}>
             <div className="error-pop-up-box" onClick={(e)=>e.stopPropagation()}>
               <div className="error-header">
                 <FontAwesomeIcon
                   icon={faXmark}
-                  onClick={() =>{ requestDispatch({type:requestActions.REMOVE_ERROR_RESPONSE});}}
+                  onClick={() =>{ modalDispatch({type:actions.REMOVE_ERROR_RESPONSE});}}
                   className="error-faXmark"
                 />
               </div>
@@ -40,7 +41,7 @@ function Response() {
                   <FontAwesomeIcon icon={faExclamation} className="error-symbol"/>
               </div>               
               <div className="error-message">
-                  {requestState.errorResponse}
+                  {modalState.errorResponse}
               </div>
               </div>
 
@@ -48,8 +49,8 @@ function Response() {
           </div>
         )}
         
-       { requestState.showRequestSuccess&&(
-          <div className="resp-pop-up-overlay" onClick={() => requestDispatch({type:requestActions.CLOSE_REQUEST_SUCCESS})}>
+       { modalState.showRequestSuccess&&(
+          <div className="resp-pop-up-overlay" onClick={() => modalDispatch({type:actions.CLOSE_REQUEST_SUCCESS})}>
             <div
               className="resp-pop-up-box"
               onClick={(e) => e.stopPropagation()}
@@ -59,7 +60,7 @@ function Response() {
               <div className="resp-header">
                 <FontAwesomeIcon
                   icon={faXmark}
-                  onClick={() => requestDispatch({type:requestActions.CLOSE_REQUEST_SUCCESS})}
+                  onClick={() => modalDispatch({type:actions.CLOSE_REQUEST_SUCCESS})}
                   className="resp-faXmark"
                 />
               </div>

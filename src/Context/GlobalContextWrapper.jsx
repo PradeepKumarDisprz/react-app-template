@@ -2,30 +2,26 @@ import React, { useEffect, useReducer, useState } from "react";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 import axios from "axios";
-import {
-  requestActions,
-  requestInitialState,
-  requestReducer,
-} from "../Reducer/RequestReducer";
 import { actions, initialState, modalReducer } from "../Reducer/ModalReducer";
 import {
   TriggerApiReducer,
   apiInitialState,
   apiActions,
 } from "../Reducer/TriggerApiReducer";
-var weekOfYear = require("dayjs/plugin/weekOfYear");
-dayjs.extend(weekOfYear);
+import GetMonth from "../Utils/Month";
+import { calendarInitialState, calendarReducer } from "../Reducer/CalendarReducer";
 
 const GlobalContextWrapper = (props) => {
-  const [currYearIndex, setCurrYearIndex] = useState(dayjs().year());
-  const [currMonthIndex, setCurrMonthIndex] = useState(dayjs().month());
-  const [currDayIndex, setCurrDayIndex] = useState(dayjs().date());
-  const [currWeekIndex, setCurrWeekIndex] = useState(dayjs(currYearIndex, currMonthIndex, currDayIndex).week());
-  const [daySelected, setDaySelected] = useState({});
+  const [calendarState,calendarDispatch]=useReducer(calendarReducer,calendarInitialState)
   const [modalState, modalDispatch] = useReducer(modalReducer, initialState);
-  const [apiState, apiDispatch] = useReducer(TriggerApiReducer,apiInitialState);
+  const [apiState, apiDispatch] = useReducer(TriggerApiReducer,apiInitialState); 
+
+  const [timeStamp, setTimeStamp] = useState({});
   const [currDateAppointments, setCurrDateAppointments] = useState([]);
-  const [requestState, requestDispatch] = useReducer( requestReducer,requestInitialState);
+  const [searchResult, setSearchResult] = useState({isTruncated: false,appointments: [],});
+  const [monthView, setMonthView] = useState(false);
+  const [search, setSearch] = useState(false);
+  
 
   const handleGetByDate = async () => {
     try {
@@ -33,14 +29,15 @@ const GlobalContextWrapper = (props) => {
         "http://localhost:5169/v1/api/appointments",
         {
           params: {
-            date: dayjs(
-              new Date(currYearIndex, currMonthIndex, currDayIndex)
-            ).format("YYYY-MM-DD"),
+            offSet: 0,
+            fetchCount: -1,
+            startDate: dayjs(
+              new Date(calendarState.currYearIndex, calendarState.currMonthIndex, calendarState.currDayIndex)
+            ).format("YYYY-MM-DD"),          
           },
         }
       );
-      setCurrDateAppointments(response.data);
-      // console.log(response.data);
+      setCurrDateAppointments(response.data.appointments);
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -48,14 +45,93 @@ const GlobalContextWrapper = (props) => {
 
   //get by date
   useEffect(() => {
-    modalDispatch({type:actions.OPEN_REQUEST_LOADER});
-    if (currDayIndex != null) {
+    if (!monthView) {
+      modalDispatch({ type: actions.OPEN_REQUEST_LOADER });
       setTimeout(() => {
         handleGetByDate();
-        modalDispatch({type:actions.CLOSE_REQUEST_LOADER});
+        modalDispatch({ type: actions.CLOSE_REQUEST_LOADER });
       }, 500);
     }
-  }, [currDayIndex]);
+  }, [calendarState.currDayIndex, monthView]);
+
+  const handleGetByMonth = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5169/v1/api/appointments",
+        {
+          params: {
+            offSet: 0,
+            fetchCount: -1,
+            startDate: dayjs(
+              new Date(calendarState.currYearIndex,calendarState.currMonthIndex, calendarState.currDayIndex)
+            )
+              .startOf("month")
+              .format("YYYY-MM-DD"),
+            endDate: dayjs(
+              new Date(calendarState.currYearIndex, calendarState.currMonthIndex, calendarState.currDayIndex)
+            )
+              .endOf("month")
+              .format("YYYY-MM-DD"),
+          },
+        }
+      );
+      setCurrDateAppointments(response.data.appointments);
+      console.log(response.data);
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
+
+  //get by month
+  useEffect(() => {
+    if (monthView == true) {
+      modalDispatch({ type: actions.OPEN_REQUEST_LOADER });
+      {
+        setTimeout(() => {
+          handleGetByMonth();
+          modalDispatch({ type: actions.CLOSE_REQUEST_LOADER });
+        }, 500);
+      }
+    }
+  }, [monthView == true, calendarState.currMonthIndex]);
+
+  // //post
+  useEffect(() => {
+    const handleSearch = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5169/v1/api/appointments",
+          {
+            params: {
+              offSet: apiState.searchEvent.offSet,
+              fetchCount: apiState.searchEvent.fetchCount,
+              startDate: apiState.searchEvent.startDate,
+              endDate: apiState.searchEvent.endDate,
+              searchTitle: apiState.searchEvent.searchTitle,
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          console.log(response.data);
+          setSearchResult({
+            isTruncated: response.data.isTruncated,
+            appointments: response.data.appointments,
+          });
+        }
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    };
+
+    if (apiState.searchEvent != null) {
+      modalDispatch({ type: actions.OPEN_REQUEST_LOADER });
+      setTimeout(() => {
+        handleSearch();
+        modalDispatch({ type: actions.CLOSE_REQUEST_LOADER });
+      }, 1000);
+    }
+  }, [apiState.searchEvent]);
 
   //post
   useEffect(() => {
@@ -66,29 +142,30 @@ const GlobalContextWrapper = (props) => {
           apiState.postEvent
         );
         if (response.data) {
-          requestDispatch({ type: requestActions.OPEN_REQUEST_SUCCESS });
+         modalDispatch({ type: actions.OPEN_REQUEST_SUCCESS });
+          // requestDispatch({ type: requestActions.OPEN_REQUEST_SUCCESS });
+          apiDispatch({type:apiActions.RESET_POST_EVENT});
           modalDispatch({ type: actions.CLOSE_ADD_EVENT });
-          handleGetByDate();
+          monthView ? handleGetByMonth() : handleGetByDate();
         }
       } catch (err) {
         if (err.response) {
-          requestDispatch({
-            type: requestActions.SET_ERROR_RESPONSE,
+          modalDispatch({
+            type: actions.SET_ERROR_RESPONSE,
             value: err.response.data.errorMessage,
           });
-          if(requestState.errorResponse == null)
-          {
-            modalDispatch({type:actions.OPEN_ADD_EVENT})
-          }
+          // if (requestState.errorResponse == null) {
+          //   modalDispatch({ type: actions.OPEN_ADD_EVENT });
+          // }
         } else console.log(`Error: ${err.message}`);
-      } 
+      }
     };
 
     if (apiState.postEvent != null) {
-      modalDispatch({type:actions.OPEN_REQUEST_LOADER});
+      modalDispatch({ type: actions.OPEN_REQUEST_LOADER });
       setTimeout(() => {
         handlePost();
-        modalDispatch({type:actions.CLOSE_REQUEST_LOADER});
+        modalDispatch({ type: actions.CLOSE_REQUEST_LOADER });
       }, 1000);
     }
   }, [apiState.postEvent]);
@@ -100,24 +177,24 @@ const GlobalContextWrapper = (props) => {
         await axios.delete(
           `http://localhost:5169/v1/api/appointments/${apiState.deleteEvent}`
         );
-        requestDispatch({ type: requestActions.OPEN_REQUEST_SUCCESS });
+        // requestDispatch({ type: requestActions.OPEN_REQUEST_SUCCESS });
+        modalDispatch({ type: actions.OPEN_REQUEST_SUCCESS });
         apiDispatch({ type: apiActions.RESET_DELETE_EVENT });
-        handleGetByDate();
+        monthView ? handleGetByMonth() : handleGetByDate();
       } catch (err) {
         if (err.response) {
-          requestDispatch({
-            type: requestActions.SET_ERROR_RESPONSE,
+          modalDispatch({
+            type: actions.SET_ERROR_RESPONSE,
             value: err.response.data.errorMessage,
           });
-    
         } else console.log(`Error: ${err.message}`);
-      } 
+      }
     };
     if (apiState.deleteEvent != null) {
-      modalDispatch({type:actions.OPEN_REQUEST_LOADER});
+      modalDispatch({ type: actions.OPEN_REQUEST_LOADER });
       setTimeout(() => {
         handleDeleteEvent();
-      modalDispatch({type:actions.CLOSE_REQUEST_LOADER});
+        modalDispatch({ type: actions.CLOSE_REQUEST_LOADER });
       }, 1000);
     }
   }, [apiState.deleteEvent]);
@@ -130,28 +207,31 @@ const GlobalContextWrapper = (props) => {
           `http://localhost:5169/v1/api/appointments/${apiState.updateEvent.appointmentId}`,
           apiState.updateEvent.eventSubmitted
         );
-          requestDispatch({ type: requestActions.OPEN_REQUEST_SUCCESS });
-          apiDispatch({ type: apiActions.RESET_UPDATE_EVENT });
-          modalDispatch({ type: actions.CLOSE_UPDATE_EVENT });
-          handleGetByDate();
+        // requestDispatch({ type: requestActions.OPEN_REQUEST_SUCCESS });
+        modalDispatch({ type: actions.OPEN_REQUEST_SUCCESS });
+        apiDispatch({ type: apiActions.RESET_UPDATE_EVENT });
+        modalDispatch({ type: actions.CLOSE_UPDATE_EVENT });
+        monthView ? handleGetByMonth() : handleGetByDate();
       } catch (err) {
         if (err.response) {
-          requestDispatch({
-            type: requestActions.SET_ERROR_RESPONSE,
+          modalDispatch({
+            type: actions.SET_ERROR_RESPONSE,
             value: err.response.data.errorMessage,
           });
-          if(requestState.errorResponse == null)
-          {
-            modalDispatch({type:actions.OPEN_UPDATE_EVENT,payload:modalState.updateEvent})
-          }
+          // if (requestState.errorResponse == null) {
+          //   modalDispatch({
+          //     type: actions.OPEN_UPDATE_EVENT,
+          //     payload: modalState.updateEvent,
+          //   });
+          // }
         } else console.log(`Error: ${err.message}`);
-      } 
+      }
     };
     if (apiState.updateEvent != null) {
-      modalDispatch({type:actions.OPEN_REQUEST_LOADER});
+      modalDispatch({ type: actions.OPEN_REQUEST_LOADER });
       setTimeout(() => {
         handleUpdate();
-        modalDispatch({type:actions.CLOSE_REQUEST_LOADER});
+        modalDispatch({ type: actions.CLOSE_REQUEST_LOADER });
       }, 1000);
     }
   }, [apiState.updateEvent]);
@@ -159,24 +239,15 @@ const GlobalContextWrapper = (props) => {
   return (
     <GlobalContext.Provider
       value={{
-        requestState,
-        requestDispatch,
-        modalState,
-        modalDispatch,
-        apiState,
-        apiDispatch,
-        currYearIndex,
-        setCurrYearIndex,
-        currMonthIndex,
-        setCurrMonthIndex,
-        currDayIndex,
-        setCurrDayIndex,
-        currWeekIndex,
-        setCurrWeekIndex,
-        daySelected,
-        setDaySelected,
+        calendarState,calendarDispatch,
+        monthView,setMonthView,
+        modalState,modalDispatch,
+        apiState,apiDispatch,
+        searchResult,setSearchResult,
+        timeStamp, setTimeStamp,
         currDateAppointments,
         setCurrDateAppointments,
+        search, setSearch
       }}
     >
       {props.children}

@@ -22,6 +22,14 @@ export function SaveButton() {
   );
 }
 
+//Delete
+export function DeleteButton() {
+  return (
+    <button className="delete-btn">
+      <span>Delete</span>
+    </button>
+  );
+}
 
 //Update Button
 export function UpdateButton() {
@@ -44,7 +52,7 @@ export function CloseButton() {
 //Cancel Button
 export function CancelButton() {
   return (
-    <button type="submit" className="cancel-btn">
+    <button type="button" className="cancel-btn">
       <span>Cancel</span>
     </button>
   );
@@ -65,6 +73,23 @@ export function TodayButton() {
   return (
     <button className="today-btn">
       <span>Today</span>
+    </button>
+  );
+}
+
+export function PreviousButton() {
+  return (
+    <button className="previous-btn">
+      Prev
+    </button>
+  );
+}
+
+//Next Button
+export function NextButton() {
+  return (
+    <button className="next-btn">
+      Next
     </button>
   );
 }

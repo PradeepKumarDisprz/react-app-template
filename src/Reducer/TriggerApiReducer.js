@@ -2,7 +2,8 @@
 export const apiInitialState = {
     postEvent: null,
     deleteEvent: null,
-    updateEvent: null
+    updateEvent: null,
+    searchEvent:null,
 };
 
 export const apiActions = {
@@ -11,7 +12,9 @@ export const apiActions = {
     DELETE_EVENT: "DELETE",
     RESET_DELETE_EVENT: "RESET_DELETE_EVENT",
     UPDATE_EVENT: "UPDATE_EVENT",
-    RESET_UPDATE_EVENT: "RESET_UPDATE_EVENT"
+    RESET_UPDATE_EVENT: "RESET_UPDATE_EVENT",
+    SEARCH_EVENT:"SEARCH_EVENT",
+    RESET_SEARCH_EVENT:"RESET_SEARCH_EVENT"
 };
 
 export const TriggerApiReducer = (state = apiInitialState, action) => {
@@ -19,19 +22,24 @@ export const TriggerApiReducer = (state = apiInitialState, action) => {
     switch (action.type) {
 
         case apiActions.POST_EVENT:
-            return { postEvent: action.payload };
+            return { ...state,postEvent: action.payload };
         case apiActions.RESET_POST_EVENT:
-            return { postEvent: null };
+            return {...state, postEvent: null };
 
         case apiActions.DELETE_EVENT:
-            return { deleteEvent: action.payload };
+            return { ...state,deleteEvent: action.payload };
         case apiActions.RESET_DELETE_EVENT:
-            return { deleteEvent: null };
+            return { ...state,deleteEvent: null };
 
         case apiActions.UPDATE_EVENT:
-            return { updateEvent: action.payload };
+            return {...state, updateEvent: action.payload };
         case apiActions.RESET_UPDATE_EVENT:
-            return { updateEvent: null };
+            return {...state, updateEvent: null };
+
+        case apiActions.SEARCH_EVENT:
+            return {...state,searchEvent:action.payload};
+        case apiActions.RESET_SEARCH_EVENT:
+            return {...state,searchEvent:null};
             
         default:
             return state;

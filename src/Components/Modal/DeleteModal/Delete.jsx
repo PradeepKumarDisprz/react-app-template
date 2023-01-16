@@ -1,41 +1,38 @@
 import React from "react";
-import { useState } from "react";
 import "./Delete.scss";
+import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { CancelButton, DeleteButton } from "../../Buttons/Buttons";
+import { DeleteButton,CancelButton } from "../../Buttons/Buttons";
 
-function Delete() {
-  const [click, setClick] = useState(false);
-  return(
+const Delete=({handleDelete,setIsDelete})=> {
+
+  return createPortal(
     <>
-      <div className="hi" onClick={() => setClick(!click)}>
-        hihello
-      </div>
-      {click && (
-        <div className="dlt-pop-up-overlay" onClick={() => setClick(false)}>
-          <div className="dlt-pop-up-box" onClick={(e) => e.stopPropagation()}>
+        <div className="dlt-pop-up-overlay">
+          <div className="dlt-pop-up-box" >
             <div className="dlt-header">
               <FontAwesomeIcon
                 icon={faXmark}
-                onClick={() => setClick(false)}
+                onClick={() => setIsDelete(false)}
                 className="dlt-faXmark"
               />
             </div>
 
             <span className="dlt-txt">Do You want to continue Delete?</span>
             <div className="dlt-popup-btns">
-              <span onClick={() => setClick(false)} className="dlt-btn">
-                <DeleteButton />
-              </span>
-              <span onClick={() => setClick(false)}>
+              <span  className="dlt-cancel-btn" onClick={() => setIsDelete(false)}>
                 <CancelButton />
+              </span>
+              <span onClick={() => {setIsDelete(false);handleDelete()}} >
+                <DeleteButton />
               </span>
             </div>
           </div>
         </div>
-      )}
-    </>
+     
+    </>,
+    document.getElementById('modal')
   );
 }
 

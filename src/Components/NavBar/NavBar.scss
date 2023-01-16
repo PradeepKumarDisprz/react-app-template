@@ -37,6 +37,7 @@
 
     .nav-day {
       padding-left:70px;
+      width: 150px;
       button {
         @include buttonStyle;
         padding: 10px 15px;
@@ -52,4 +53,10 @@
       margin-right: 30px;
     }
   }
+}
+
+
+.search-bar
+{
+  width: 50%;
 }

@@ -8,9 +8,22 @@ import "./ViewEvent.scss";
 import GlobalContext from "../../../Context/GlobalContext";
 import dayjs from "dayjs";
 import { actions } from "../../../Reducer/ModalReducer";
+import { apiActions } from "../../../Reducer/TriggerApiReducer";
 
 const ViewEvent = () => {
-  const {modalState,modalDispatch}=useContext(GlobalContext);
+  const {modalState,modalDispatch,apiDispatch}=useContext(GlobalContext);
+
+  const handleDelete=()=>
+  {
+    apiDispatch({type:apiActions.DELETE_EVENT,payload:modalState.viewEvent.appointmentId})
+    modalDispatch({type:actions.RESET_VIEW_EVENT})
+  }
+
+  const handleEdit=()=>
+  {
+    modalDispatch({type:actions.RESET_VIEW_EVENT})
+    modalDispatch({type:actions.OPEN_UPDATE_EVENT,payload:modalState.viewEvent}); 
+  }
 
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -22,7 +35,7 @@ const ViewEvent = () => {
            }}>
             <div className="view-event-header">
               <span className="view-header-ellipsis">
-                <EllipsisButton isOpen={isOpen} setIsOpen={setIsOpen} meet={modalState.viewEvent}/>
+                <EllipsisButton isOpen={isOpen} setIsOpen={setIsOpen} handleDelete={handleDelete} handleEdit={handleEdit}/>
               </span>
               <FontAwesomeIcon
                 icon={faXmark}

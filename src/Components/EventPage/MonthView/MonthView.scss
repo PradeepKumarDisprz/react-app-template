@@ -1,0 +1,69 @@
+.big-cal-month
+{
+    // position: absolute;
+    width:100%;
+    // border-radius: px;
+    box-sizing: border-box;
+    bottom: 0;
+    // margin:18px;
+    background-color: #fff;
+}
+
+.big-cal-days
+{  
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(5,125px);  
+}
+
+.each-day
+{     
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    border: 1px solid #dcdcdc;
+    background-color: transparent;
+}
+
+.week-name
+{
+    font-size: 12px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+.day-num
+{
+    display: flex;
+    flex-direction:column;
+    font-size: 12px;
+    padding: 7px;
+    transition:0.3s linear;
+}
+
+.calendar-meet
+{
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color:#e3edee;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+    .curr-day-bg
+    {
+        color:#fff;
+        background-color: #62006b;
+        border-radius: 50px;
+    }
+    .other-day-bg
+    {
+        color:#fff;
+        background-color: #df7ce8;
+        border-radius: 50px;
+    }
+    .faded-bg
+    {
+        color:#939393
+    }

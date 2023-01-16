@@ -2,18 +2,14 @@ import dayjs from "dayjs";
 
 const GetUpcomingEvents = (currDateAppointments) => {
     const separatedEvents=[];
-    const currDate=dayjs();
+    const currTime=dayjs();
     currDateAppointments.map((event)=>
     {
-        if(dayjs(event.appointmentStartTime)>=currDate||event.appointmentEndTime<currDate)
+        if(dayjs(event.appointmentStartTime)>=currTime||dayjs(event.appointmentEndTime)>=currTime)
         {
             separatedEvents.push(event);
         }
     });
-
-
     return separatedEvents;
-
 }
- 
 export default GetUpcomingEvents;
