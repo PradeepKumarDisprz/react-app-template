@@ -1,14 +1,11 @@
 import "./Buttons.scss";
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd } from "@fortawesome/free-solid-svg-icons";
+
 
 //Create Button
 export function CreateButton() {
   return (
     <button className="create-btn">
-      <FontAwesomeIcon icon={faAdd} className="add-icon" />
-      <span>Create</span>
+    Create Task
     </button>
   );
 }
@@ -17,7 +14,7 @@ export function CreateButton() {
 export function SaveButton() {
   return (
     <button type="submit" className="save-btn">
-      <span>Save</span>
+     Save
     </button>
   );
 }
@@ -26,7 +23,7 @@ export function SaveButton() {
 export function DeleteButton() {
   return (
     <button className="delete-btn">
-      <span>Delete</span>
+      Delete
     </button>
   );
 }
@@ -35,7 +32,7 @@ export function DeleteButton() {
 export function UpdateButton() {
   return (
     <button type="submit" className="update-btn">
-      <span>Update</span>
+      Update
     </button>
   );
 }
@@ -44,7 +41,7 @@ export function UpdateButton() {
 export function CloseButton() {
   return (
     <button className="close-btn">
-      <span>Close</span>
+      Close
     </button>
   );
 }
@@ -53,7 +50,7 @@ export function CloseButton() {
 export function CancelButton() {
   return (
     <button type="button" className="cancel-btn">
-      <span>Cancel</span>
+      Cancel
     </button>
   );
 }
@@ -63,7 +60,7 @@ export function CancelButton() {
 export function DiscardButton() {
   return (
     <button className="discard-btn">
-      <span>Discard</span>
+     Discard
     </button>
   );
 }
@@ -72,24 +69,7 @@ export function DiscardButton() {
 export function TodayButton() {
   return (
     <button className="today-btn">
-      <span>Today</span>
-    </button>
-  );
-}
-
-export function PreviousButton() {
-  return (
-    <button className="previous-btn">
-      Prev
-    </button>
-  );
-}
-
-//Next Button
-export function NextButton() {
-  return (
-    <button className="next-btn">
-      Next
+      Today
     </button>
   );
 }

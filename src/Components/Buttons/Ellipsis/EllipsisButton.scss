@@ -1,32 +1,36 @@
 @import "../../ReUsableStyles/variable.scss";
+@import "../../ReUsableStyles/mixin.scss";
+
 //style for ellipsis
 .ellipsis-icon {
   position: relative;
   cursor: $cursor-pointer;
-  padding:3px 7px;
+  padding:2px 6px;
   border-radius: 50px;
   &:hover {
-    color: #fff;
+    color: $background-color;
     background-color: $hover-color;
   }
 }
-.ellipsis-buttons {
+.ellipsis-options {
   position: absolute;
   margin-top: 8px;
   margin-left: 0px;
   z-index: 100;
-  box-shadow: 1px 1px 5px #9d9c9c;
+  box-shadow: $box-shadow;
   width: 70px;
   display:$display-property;
   flex-direction: $flex-direction;
+  
   .btn {
+    transition: 0.2s linear;
     cursor:$cursor-pointer;
     font-size: 12px;
     padding: 8px;
     background-color: $background-color;
     border: none;
     &:hover {
-      color: #fff;
+      color: $background-color;
       background-color: $hover-color;
     }
   }

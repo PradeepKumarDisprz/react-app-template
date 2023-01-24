@@ -1,45 +1,53 @@
 @import "../ReUsableStyles/variable.scss";
 
-.appointment-details-card-container
-{
-    // position: absolute;
-    background-image: $linear-gradient;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 10px;
-    margin-bottom: 15px;
-    cursor: default;
-    color: $font-style-color;
-    &:hover
-    {
-        color: #9e7100;
-        border: 1px solid;
+.appointment-details-card-container {
+  background-image: $linear-gradient;
+  border-radius: $border-radius;
+  font-size: 9px;
+  margin-bottom: 15px;
+  cursor: $cursor-pointer;
+  padding: 20px;
+  border: 1px solid transparent;
+
+  &:hover {
+    color: $hover-color;
+    border: 1px solid;
+    .appointment-row-1 {
+      .appointment-title {        
+          background-color: $hover-color;
+      }
     }
-    .appointment-title-and-time-stamp
-    {
-        display: $display-property;
-        justify-content: $space-between;
-        padding-bottom: 15px;
-        .appointment-title{
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: 150px;
-            font-size: 13px;
-            font-weight: bold;
-        }
+  }
+
+  .appointment-row-1 {
+    display: $display-property;
+    padding-bottom: 30px;
+    align-items: $align-item;
+    justify-content: $space-between;
+    .appointment-title {
+      font-size: 13px;
+      width: max-content;
+      max-width: 25%;
+      background-color: $background-font-style-color;
+      color: $background-color;
+      padding: 3px 10px;
+      border-radius: 10px;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 1px;
     }
-    .desc
-    {
-        display: $display-property;
-        justify-content: $space-between;
-        .appointment-desc
-        {
-            width: 150px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            
-        }
-    }
+  }
+
+  .appointment-row-2 {
+    display: $display-property;
+    justify-content: $space-between;
+  }
+
+  .appointment-desc {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

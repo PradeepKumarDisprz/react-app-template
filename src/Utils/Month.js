@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 
-const GetMonth = (month,year) => {
-    // month = Math.floor(month);
+const GetMonth = (month, year) => {
     const firstDayOfTheMonth = dayjs(new Date(year, month, 1)).day();
     let currentMonthCount = 0 - firstDayOfTheMonth;
     const daysMatrix = new Array(5).fill([]).map(() => {

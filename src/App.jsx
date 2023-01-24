@@ -1,15 +1,10 @@
-import Calendar from "./Components/Calendar/Calendar";
-import "./App.scss";
-import GetUpcomingEvents from "./Utils/UpcomingEvents";
-import { Count } from "./Components/SidePanel/UpcomingEvents/UpcomingEvent";
+import Scheduler from "./Components/Scheduler/Scheduler";
+
 
 const App = () => {
-
   return (
     <>
-   {/* <UpcomingEvents/> */}
-   {/* <Count/> */}
-    <Calendar/>   
+    <Scheduler/>   
     </>  
   );
 };

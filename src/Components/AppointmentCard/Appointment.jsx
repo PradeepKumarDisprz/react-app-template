@@ -3,69 +3,17 @@ import "./Appointment.scss";
 import dayjs from "dayjs";
 
 const Appointment = ({ event }) => {
-  const { appointmentEndTime, appointmentStartTime, appointmentTitle } = event;
-  const HEIGHT = 80.9;
-  let fontValue = 12;
-  let heightValue = 0;
-  let paddingTop = 0;
-  let fontWeight = "";
-  const startTime = dayjs(appointmentStartTime).hour() * 60;
-  const startTimeMinutes = dayjs(appointmentStartTime).minute();
-  const endTime =
-    dayjs(appointmentEndTime).format("HH") == "00"
-      ? 24 * 60
-      : dayjs(appointmentEndTime).hour() * 60;
-  const endTimeMinutes = dayjs(appointmentEndTime).minute();
-  const hourDuration = endTime - startTime;
-  const minutesDuration = endTimeMinutes - startTimeMinutes;
-  const TotalDuration = hourDuration + minutesDuration;
-
-  if (TotalDuration >= 60) {
-    heightValue = (TotalDuration / 60) * 79;
-    paddingTop = 10;
-    fontValue = 14;
-    fontWeight = 600;
-  } else if (TotalDuration < 60) {
-    if (TotalDuration <= 5) {
-      heightValue = 6;
-      fontValue = 5;
-    }
-    // if (TotalDuration <= 10) {
-    //   heightValue = 10;
-    //   fontValue = 5;
-    // }
-    // else if (TotalDuration <= 20) {
-    //   heightValue = (TotalDuration / 60) * 78;
-    //   fontValue = 8;
-    // }
-    else {
-      fontValue = 14;
-      fontWeight = 600;
-      heightValue = (TotalDuration / 60) * 78;
-    }
-  }
-
-  const appointmentCardStyle = {
-    position: "absolute",
-    top: (startTime / 60) * HEIGHT + (startTimeMinutes / 60) * HEIGHT,
-    height: heightValue,
-    fontSize: fontValue,
-    fontWeight: fontWeight,
-  };
-
-  const appointmentContentStyle = {
-    paddingTop: paddingTop,
-  };
-
+  const { appointmentEndTime, appointmentStartTime, appointmentTitle } = event.appointment;
+ 
   return (
-    <div className={`appointment-content ${appointmentCardStyle.height<30&&"card-hover-style"}`} style={appointmentCardStyle}>
-      <div className="appointment-timestamp" style={appointmentContentStyle}>
+    <div className={`appointment-content ${event.appointmentCardStyle.height<30&&"card-hover-style"}`} style={event.appointmentCardStyle}>
+      <div className="appointment-timestamp" style={event.appointmentContentStyle}>
         {event &&
-          dayjs(appointmentStartTime).format("HH:mm") +
-            " - " +
-            dayjs(appointmentEndTime).format("HH:mm")}
+          dayjs(appointmentStartTime).format("hh:mm a") +
+            " - " + 
+            dayjs(appointmentEndTime).format("hh:mm a")}
       </div>
-      <div className="appointment-title" style={appointmentContentStyle}>
+      <div className="appointment-title" style={event.appointmentContentStyle}>
         {appointmentTitle}
       </div>
     </div>

@@ -5,22 +5,31 @@
     border-radius: 5px;
     display:$display-property;
     justify-content: $space-between ;
-    width: 100%;
+    width: 97%;
+    left: 10px;
     color: #000000;
-    background-color: $container-background-color;
+    background-color: #e8dff4;
+    border: 1px solid $hover-color;
+    // transition: 0.2s linear;
 
     &:hover
     {
-        border: 1px solid $font-style-color;
-        color: #9e7100;
+        color: $hover-color;
     }
 
     .appointment-title
     {
         padding-right: 20px;
+        width: max-content;
+        max-width: 25%;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
     }
     .appointment-timestamp
     {
+        border-radius:5px;
+        border-left:10px solid $hover-color;
         padding-left: 20px;
     }
 

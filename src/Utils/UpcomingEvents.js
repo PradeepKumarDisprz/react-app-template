@@ -1,12 +1,10 @@
 import dayjs from "dayjs";
 
-const GetUpcomingEvents = (currDateAppointments) => {
-    const separatedEvents=[];
-    const currTime=dayjs();
-    currDateAppointments.map((event)=>
-    {
-        if(dayjs(event.appointmentStartTime)>=currTime||dayjs(event.appointmentEndTime)>=currTime)
-        {
+const GetUpcomingEvents = (appointments) => {
+    const separatedEvents = [];
+    const currTime = dayjs();
+    appointments.map((event) => {
+        if (dayjs(event.appointmentStartTime) >= currTime || dayjs(event.appointmentEndTime) >= currTime) {
             separatedEvents.push(event);
         }
     });
